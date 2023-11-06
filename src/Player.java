@@ -2,13 +2,15 @@ public class Player {
     private String name;
     private int level;
     private int experience;
-    private int health;
+    private int maxHealth;
+    private int currentHealth;
 
     public Player(String name) {
         this.name = name;
         this.level = 1;
         this.experience = 0;
-        this.health = 10;
+        this.maxHealth = 10;
+        this.currentHealth = this.maxHealth;
     }
 
     public String getName() {
@@ -23,12 +25,20 @@ public class Player {
         return experience;
     }
 
-    public int getHealth() {
-        return this.health;
+    public int getCurrentHealth() {
+        return this.currentHealth;
     }
 
-    private void setHealth(int newHealth) {
-        this.health = newHealth;
+    private void setCurrentHealth(int newHealth) {
+        this.currentHealth = newHealth;
+    }
+
+    public int getMaxHealth() {
+        return this.maxHealth;
+    }
+
+    private void setMaxHealth(int newMaxHealth) {
+        this.maxHealth = newMaxHealth;
     }
 
 }
