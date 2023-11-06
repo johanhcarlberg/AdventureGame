@@ -4,7 +4,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         Scanner scan = new Scanner(System.in); 
     
-    while (true){
+    while (true){ //Loopen körs tills ett break kommer.
         showInnAlternatives();
         int userInputChoiceInMenu = scan.nextInt(); 
         System.out.println("Du valde alternativ nummer: " + userInputChoiceInMenu);
@@ -15,11 +15,11 @@ public class App {
         }
         else if (userInputChoiceInMenu ==2){
             viewCharacterSheet();
-            break; //Avslutar loopen om ett giltigt val görs.
+            break; 
         }
         else if (userInputChoiceInMenu == 3){
              restCharacter();
-             break; //Avslutar loopen om ett giltigt val görs.
+             break; 
         }
         else {
              System.out.println("Du har angivit ett felaktiskt alternativ. Försök igen.");
