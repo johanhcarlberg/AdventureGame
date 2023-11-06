@@ -27,4 +27,8 @@ public class Player {
         return this.health;
     }
 
+    private void setHealth(int newHealth) {
+        this.health = newHealth;
+    }
+
 }
