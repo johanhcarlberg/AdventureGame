@@ -15,7 +15,9 @@ public class Adventure {
         this.random = new Random();
     }
 
-    public void selectAdventureType() {
+    public World getWorld() {
+        return world;
+    }
         int randNum = random.nextInt(100) + 1;
         if (randNum <= DILEMMA_CHANCE) {
             // Adventure type is dilemma
