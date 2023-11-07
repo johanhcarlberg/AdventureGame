@@ -1,5 +1,10 @@
 import java.util.Random;
 
+enum AdventureType {
+    BATTLE,
+    DILEMMA
+}
+
 public class Adventure {
     private World world;
     private Random random;
