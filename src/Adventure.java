@@ -18,13 +18,27 @@ public class Adventure {
     public World getWorld() {
         return world;
     }
+
+    public void startAdventure() {
+        AdventureType adventureType = selectAdventureType();
+        switch (adventureType) {
+            case BATTLE:
+                // TODO: Select an enemy from world and start battle
+                break;
+            case DILEMMA:
+                // TODO: Select a dilemma from world and start dilemma
+                break;
+        }
+    }
+
+    private AdventureType selectAdventureType() {
         int randNum = random.nextInt(100) + 1;
         if (randNum <= DILEMMA_CHANCE) {
             // Adventure type is dilemma
-            // TODO: Select a dilemma from world
+            return AdventureType.DILEMMA;
         } else {
             // Adventure type is battle
-            // TODO: Select a monster from world
+            return AdventureType.BATTLE;
         }
     }
 }
