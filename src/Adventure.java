@@ -20,7 +20,7 @@ public class Adventure {
     }
 
     public void startAdventure() {
-        EncounterType adventureType = selectAdventureType();
+        EncounterType adventureType = selectEncounterType();
         switch (adventureType) {
             case BATTLE:
                 // TODO: Select an enemy from world and start battle
@@ -31,7 +31,7 @@ public class Adventure {
         }
     }
 
-    private EncounterType selectAdventureType() {
+    private EncounterType selectEncounterType() {
         int randNum = random.nextInt(100) + 1;
         if (randNum <= DILEMMA_CHANCE) {
             // Adventure type is dilemma
