@@ -16,7 +16,7 @@ public class Combat {
 
     public static void main(String[] args) {
         Combat test = new Combat();
-        test.startCombat();
+        test.winner();
     
     }
 
@@ -62,10 +62,11 @@ public class Combat {
         for (int i = 0; i < actionsList.size(); i++) { // Skriver ut lista med alternativ för strid
             System.out.println(i+1 + ". " + actionsList.get(i));
         }
-        pAction = actions.nextInt();
+        System.out.print(">");
+        pAction = actions.nextInt() - 1;
 
         //Random funktion för att välja motståndarens handling
-        eAction = random.nextInt(3)+1;
+        eAction = random.nextInt(3);
         System.out.println("You chose to " + actionsList.get(pAction) + ".");
         System.out.println(enemy.getName() + " chose to " + actionsList.get(eAction) + ".");
 
@@ -73,60 +74,60 @@ public class Combat {
 
     void compareAttacks(int p, int e) {
         // if-else (?) som jämför pAction mot eAction
-        if(p == 1 && e == 1){
+        if(p == 0 && e == 0){
             System.out.println("You fight eachother. You both take damage.");
             playerDmg();
             enemyDmg();
         }
-        else if(p == 1 && e == 2){
+        else if(p == 0 && e == 1){
             System.out.println(enemy.getName() + " blocks your attack and follows up with a counter. You take damage.");
             playerDmg();
         }
 
-        else if(p == 1 && e == 3){
+        else if(p == 0 && e == 2){
             System.out.println(enemy.getName() + " tries to fake you out. The " + enemy.getName() + " fails and take damage");
             enemyDmg();
         }
 
-        else if(p == 2 && e == 1){
+        else if(p == 1 && e == 0){
             System.out.println("You block the enemy attack and counter. The enemy takes damage.");
             enemyDmg();
         }
 
-        else if(p == 2 && e == 2){
+        else if(p == 1 && e == 1){
             System.out.println("You both stare at eachother intensely waiting for the other to move!");
         }
 
-        else if(p == 2 && e == 3){
+        else if(p == 1 && e == 2){
             System.out.println("You try to block but the enemy fakes you out! You take damage!");
             playerDmg();
         }
 
-        else if(p == 3 && e == 1){
+        else if(p == 2 && e == 0){
             System.out.println("You try to fake out the enemy. It sees right through you. You take damage.");
             playerDmg();
         }
 
-        else if(p == 3 && e == 2){
+        else if(p == 2 && e == 1){
             System.out.println("The enemy tries to block but your attack slips through anyway! You deal damage");
             enemyDmg();
         }
 
-        else if(p == 3 && e == 3){
+        else if(p == 2 && e == 2){
             System.out.println("You both miss eachother. No one takes any damage");
         }
 
-        else if(p == 4 && e == 1){
+        else if(p == 3 && e == 0){
             System.out.println("You turn to run away but the " + enemy.getName() + " catches you. You take damage");
             playerDmg();
         }
 
-        else if(p == 4 && e == 2){
+        else if(p == 3 && e == 1){
             System.out.println("You successfully run away");
             
         }
 
-        else if(p == 4 && e == 3){
+        else if(p == 3 && e == 2){
             System.out.println("You try to run away. Its no use. The enemy is too fast!");
         }
 
@@ -143,9 +144,10 @@ public class Combat {
     }
 
     void winner(){
-        System.out.println("Congratulations! You defeated " + enemy.getName() + "!");
-        System.out.println("You gained " + enemy.getExperience() + " points of experience! Yay!");
-        
+        System.out.println("\nCongratulations! You defeated " + enemy.getName() + "!");
+        System.out.println("\nYou gained " + enemy.getExperience() + " points of experience! Yay!");
+        player.addExperience(enemy.getExperience());
+        System.out.println("You now have " + player.getExperience() + " experience points! Much Wow! Such strong!\n");
     }
     
     void gameOver(){
