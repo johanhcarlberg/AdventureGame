@@ -20,8 +20,8 @@ public class Adventure {
     }
 
     public void startAdventure() {
-        EncounterType adventureType = selectEncounterType();
-        switch (adventureType) {
+        EncounterType encounterType = selectEncounterType();
+        switch (encounterType) {
             case BATTLE:
                 // TODO: Select an enemy from world and start battle
                 break;
