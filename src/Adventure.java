@@ -1,6 +1,6 @@
 import java.util.Random;
 
-enum AdventureType {
+enum EncounterType {
     BATTLE,
     DILEMMA
 }
@@ -20,7 +20,7 @@ public class Adventure {
     }
 
     public void startAdventure() {
-        AdventureType adventureType = selectAdventureType();
+        EncounterType adventureType = selectAdventureType();
         switch (adventureType) {
             case BATTLE:
                 // TODO: Select an enemy from world and start battle
@@ -31,14 +31,14 @@ public class Adventure {
         }
     }
 
-    private AdventureType selectAdventureType() {
+    private EncounterType selectAdventureType() {
         int randNum = random.nextInt(100) + 1;
         if (randNum <= DILEMMA_CHANCE) {
             // Adventure type is dilemma
-            return AdventureType.DILEMMA;
+            return EncounterType.DILEMMA;
         } else {
             // Adventure type is battle
-            return AdventureType.BATTLE;
+            return EncounterType.BATTLE;
         }
     }
 }
