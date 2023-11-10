@@ -41,4 +41,13 @@ public class Player {
         this.maxHealth = newMaxHealth;
     }
 
+    private void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public int addExperience(int experienceToAdd) {
+        this.experience += experienceToAdd;
+        return this.experience;
+    }
+
 }
