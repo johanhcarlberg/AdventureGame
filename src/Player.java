@@ -50,4 +50,8 @@ public class Player {
         return this.experience;
     }
 
+    public int calcNextLevelExperience() {
+        return (int) Math.floor(((this.level + 1) * 50) * 1.25);
+    }
+
 }
