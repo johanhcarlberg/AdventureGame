@@ -2,6 +2,7 @@ public class Player {
     private String name;
     private int level;
     private int experience;
+    private int nextLevelExperience;
     private int maxHealth;
     private int currentHealth;
 
@@ -11,6 +12,7 @@ public class Player {
         this.experience = 0;
         this.maxHealth = 10;
         this.currentHealth = this.maxHealth;
+        this.nextLevelExperience = calcNextLevelExperience();
     }
 
     public String getName() {
@@ -48,6 +50,10 @@ public class Player {
     public int addExperience(int experienceToAdd) {
         this.experience += experienceToAdd;
         return this.experience;
+    }
+
+    public int getNextLevelExperience() {
+        return this.nextLevelExperience;
     }
 
     public int calcNextLevelExperience() {
