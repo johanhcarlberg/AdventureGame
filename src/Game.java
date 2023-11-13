@@ -12,6 +12,8 @@ public class Game {
         System.out.println("Welcome to the Magic House!");
         System.out.println("What is your characters name? ");
         playerName = sc.nextLine();
+
+        selectClass();
         System.out.println("Hello " + playerName + "! Welcome to the game! ");
             
     }
