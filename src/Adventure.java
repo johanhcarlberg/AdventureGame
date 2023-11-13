@@ -6,17 +6,13 @@ enum EncounterType {
 }
 
 public class Adventure {
-    private World world;
+    // TODO: Add World field
     private Random random;
     private final static int DILEMMA_CHANCE_PERCENTAGE = 15;
 
-    public Adventure(World world) {
-        this.world = world;
+    public Adventure() {
+        // TODO: Add world to constructor
         this.random = new Random();
-    }
-
-    public World getWorld() {
-        return world;
     }
 
     public void startAdventure() {
@@ -33,7 +29,7 @@ public class Adventure {
 
     private EncounterType selectEncounterType() {
         int randNum = random.nextInt(100) + 1;
-        if (randNum <= DILEMMA_CHANCE) {
+        if (randNum <= DILEMMA_CHANCE_PERCENTAGE) {
             // Adventure type is dilemma
             return EncounterType.DILEMMA;
         } else {
