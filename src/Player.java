@@ -64,6 +64,10 @@ public class Player {
         return (int) Math.floor(((this.level + 1) * 50) * 1.25);
     }
 
+    public boolean canLevelUp() {
+        return this.experience >= nextLevelExperience;
+    }
+
     private void levelUp() {
         setLevel(this.level += 1);
         setExperience(0);
