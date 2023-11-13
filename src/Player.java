@@ -78,6 +78,7 @@ public class Player {
     private void levelUp() {
         setLevel(this.level += 1);
         setExperience(Math.max(0, experience - nextLevelExperience));
+        setNextLevelExperience(calcNextLevelExperience());
 
         if(canLevelUp()) {
             levelUp();
