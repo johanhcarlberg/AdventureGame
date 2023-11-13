@@ -53,6 +53,9 @@ public class Player {
 
     public int addExperience(int experienceToAdd) {
         this.experience += experienceToAdd;
+        if(canLevelUp()) {
+            levelUp();
+        }
         return this.experience;
     }
 
