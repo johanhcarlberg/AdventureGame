@@ -2,10 +2,13 @@ import java.util.Scanner;
 
 public class Game {
     public String playerName;
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc;
+
+    public Game() {
+        this.sc = new Scanner(System.in);
+    }
 
     public void startGame() {
-        
         System.out.println("Welcome to the Magic House!");
         System.out.println("What is your characters name? ");
         playerName = sc.nextLine();
