@@ -70,7 +70,11 @@ public class Player {
 
     private void levelUp() {
         setLevel(this.level += 1);
-        setExperience(0);
+        setExperience(Math.max(0, experience - nextLevelExperience));
+
+        if(canLevelUp()) {
+            levelUp();
+        }
     }
 
 }
