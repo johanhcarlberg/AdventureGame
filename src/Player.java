@@ -64,4 +64,9 @@ public class Player {
         return (int) Math.floor(((this.level + 1) * 50) * 1.25);
     }
 
+    private void levelUp() {
+        setLevel(this.level += 1);
+        setExperience(0);
+    }
+
 }
