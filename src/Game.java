@@ -2,13 +2,18 @@ import java.util.Scanner;
 
 public class Game {
     public String playerName;
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc;
+
+    public Game() {
+        this.sc = new Scanner(System.in);
+    }
 
     public void startGame() {
-        
         System.out.println("Welcome to the Magic House!");
         System.out.println("What is your characters name? ");
         playerName = sc.nextLine();
+
+        selectClass();
         System.out.println("Hello " + playerName + "! Welcome to the game! ");
             
     }
@@ -61,5 +66,17 @@ public class Game {
     
     public void restCharacter() {
         //Vila upp karaktären
+    }
+
+    public void selectClass() {
+        String[] classes = {"Warrior", "Rogue"};
+        System.out.println("Select your class:");
+        for (int i = 0; i < classes.length; i++) {
+            System.out.println(i+1 + ". " + classes[i]);
+        }
+
+        int classSelection = sc.nextInt();
+        System.out.println("Your class is " + classes[classSelection - 1]);
+        sc.nextLine();
     }
 }
