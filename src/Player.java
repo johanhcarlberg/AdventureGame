@@ -23,6 +23,10 @@ public class Player {
         return level;
     }
 
+    private void setLevel(int level) {
+        this.level = level;
+    }
+
     public int getExperience() {
         return experience;
     }
