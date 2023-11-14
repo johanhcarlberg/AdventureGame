@@ -18,7 +18,7 @@ public class Game {
 
         Player player = new Player(playerName, playerClass);
 
-        System.out.println("Hello " + player.getName() + "! Welcome to the game! ");
+        System.out.println("Hello " + player.getName() + " the " + player.getPlayerClass() + "! Welcome to the game! ");
     }
         
     //Metod som visar VärdshusMenyn.
