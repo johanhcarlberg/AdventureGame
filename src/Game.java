@@ -13,10 +13,12 @@ public class Game {
         System.out.println("What is your characters name? ");
         playerName = sc.nextLine();
 
-        selectClass();
-        System.out.println("Hello " + playerName + "! Welcome to the game! ");
+        String playerClass = selectClass();
+        System.out.println(playerClass);
 
-            
+        Player player = new Player(playerName, playerClass);
+
+        System.out.println("Hello " + player.getName() + "! Welcome to the game! ");
     }
         
     //Metod som visar VärdshusMenyn.
