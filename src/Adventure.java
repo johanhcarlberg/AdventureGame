@@ -19,12 +19,18 @@ public class Adventure {
         EncounterType encounterType = selectEncounterType();
         switch (encounterType) {
             case BATTLE:
-                // TODO: Select an enemy from world and start battle
+                Enemy enemy = getRandomEnemyFromWorld();
+                // TODO: Create combat instance
                 break;
             case DILEMMA:
                 // TODO: Select a dilemma from world and start dilemma
                 break;
         }
+    }
+
+    private Enemy getRandomEnemyFromWorld() {
+        Enemy enemy = world.getEnemies().get(random.nextInt(world.getEnemies().size()));
+        return enemy;
     }
 
     private EncounterType selectEncounterType() {
