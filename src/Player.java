@@ -53,7 +53,7 @@ public class Player {
 
     public int addExperience(int experienceToAdd) {
         this.experience += experienceToAdd;
-        if(canLevelUp()) {
+        if (canLevelUp()) {
             levelUp();
         }
         return this.experience;
@@ -79,10 +79,15 @@ public class Player {
         setLevel(this.level += 1);
         setExperience(Math.max(0, experience - nextLevelExperience));
         setNextLevelExperience(calcNextLevelExperience());
+        printLevelUpMessage();
 
-        if(canLevelUp()) {
+        if (canLevelUp()) {
             levelUp();
         }
+    }
+
+    private void printLevelUpMessage() {
+        System.out.println("You have gained a level! You are now level " + this.level + ".");
     }
 
 }
