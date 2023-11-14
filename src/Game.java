@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Game {
     public String playerName;
     private Scanner sc;
+    private Player player;
 
     public Game() {
         this.sc = new Scanner(System.in);
@@ -16,7 +17,7 @@ public class Game {
         String playerClass = selectClass();
         System.out.println(playerClass);
 
-        Player player = new Player(playerName, playerClass);
+        player = new Player(playerName, playerClass);
 
         System.out.println("Hello " + player.getName() + " the " + player.getPlayerClass() + "! Welcome to the game! ");
     }
