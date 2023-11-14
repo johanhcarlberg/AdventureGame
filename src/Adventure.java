@@ -6,12 +6,12 @@ enum EncounterType {
 }
 
 public class Adventure {
-    // TODO: Add World field
+    private World world;
     private Random random;
     private final static int DILEMMA_CHANCE_PERCENTAGE = 15;
 
-    public Adventure() {
-        // TODO: Add world to constructor
+    public Adventure(World world) {
+        this.world = world;
         this.random = new Random();
     }
 
