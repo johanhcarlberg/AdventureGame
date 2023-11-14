@@ -10,6 +10,7 @@ public class Game {
         System.out.println("What is your characters name? ");
         playerName = sc.nextLine();
         System.out.println("Hello " + playerName + "! Welcome to the game! ");
+
             
     }
         
@@ -61,5 +62,19 @@ public class Game {
     
     public void restCharacter() {
         //Vila upp karaktären
+    }
+
+
+    //Denna metod bör göras om så att den istället tar emot ett dilemma och kör showDilemma och resolveDilemma på det valda dilemmat. Var ska dilemma skapas? 
+    public void goIntoDilemma(){
+        Dilemma dilemma1 = new Dilemma("Du vandrar längs en smal stig när en dånande ljudvåg skär genom luften. Marken börjar vibrera under dina fötter och fåglarna flyger panikslagna upp från träden. Plötsligt brakar en kaskad av stenar och jord nedför sluttningen, och du inser att du befinner dig mitt i ett fruktansvärt jordskred."
+        , "Gömma dig under en tunna till höger", "Spring bakåt och ducka");
+        Dilemma dilemma2 = new Dilemma("Du ser ett mynt som ligger på marken. Vad gör du?", "Plockar upp och granskar myntet", "Låter det ligga. Sånt kan va farligt.");
+
+        dilemma1.showDilemma();
+        dilemma1.resolveDilemma(sc.nextInt());
+
+        dilemma2.showDilemma();
+        dilemma2.resolveDilemma(sc.nextInt());
     }
 }
