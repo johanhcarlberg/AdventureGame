@@ -2,13 +2,18 @@ import java.util.Scanner;
 
 public class Game {
     public String playerName;
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc;
+
+    public Game() {
+        this.sc = new Scanner(System.in);
+    }
 
     public void startGame() {
-        
         System.out.println("Welcome to the Magic House!");
         System.out.println("What is your characters name? ");
         playerName = sc.nextLine();
+
+        selectClass();
         System.out.println("Hello " + playerName + "! Welcome to the game! ");
 
             
@@ -64,7 +69,6 @@ public class Game {
         //Vila upp karaktären
     }
 
-
     //Denna metod bör göras om så att den istället tar emot ett dilemma och kör showDilemma och resolveDilemma på det valda dilemmat. Var ska dilemma skapas? I Värld 1-klassen?
     public void goIntoDilemma(){
         Dilemma dilemma1 = new Dilemma("Du vandrar längs en smal stig när en dånande ljudvåg skär genom luften. Marken börjar vibrera under dina fötter och fåglarna flyger panikslagna upp från träden. Plötsligt brakar en kaskad av stenar och jord nedför sluttningen, och du inser att du befinner dig mitt i ett fruktansvärt jordskred."
@@ -76,5 +80,16 @@ public class Game {
 
         dilemma2.showDilemma();
         dilemma2.resolveDilemma(sc.nextInt());
+    }
+    public void selectClass() {
+        String[] classes = {"Warrior", "Rogue"};
+        System.out.println("Select your class:");
+        for (int i = 0; i < classes.length; i++) {
+            System.out.println(i+1 + ". " + classes[i]);
+        }
+
+        int classSelection = sc.nextInt();
+        System.out.println("Your class is " + classes[classSelection - 1]);
+        sc.nextLine();
     }
 }

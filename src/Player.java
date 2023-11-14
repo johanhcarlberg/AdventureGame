@@ -2,6 +2,7 @@ public class Player {
     private String name;
     private int level;
     private int experience;
+    private int nextLevelExperience;
     private int maxHealth;
     private int currentHealth;
 
@@ -11,6 +12,7 @@ public class Player {
         this.experience = 0;
         this.maxHealth = 10;
         this.currentHealth = this.maxHealth;
+        this.nextLevelExperience = calcNextLevelExperience();
     }
 
     public String getName() {
@@ -19,6 +21,10 @@ public class Player {
 
     public int getLevel() {
         return level;
+    }
+
+    private void setLevel(int level) {
+        this.level = level;
     }
 
     public int getExperience() {
@@ -46,8 +52,42 @@ public class Player {
     }
 
     public int addExperience(int experienceToAdd) {
-        this.experience += experienceToAdd;
+        setExperience(this.experience + experienceToAdd);
+        if (canLevelUp()) {
+            levelUp();
+        }
         return this.experience;
+    }
+
+    public int getNextLevelExperience() {
+        return this.nextLevelExperience;
+    }
+
+    private void setNextLevelExperience(int nextLevelExperience) {
+        this.nextLevelExperience = nextLevelExperience;
+    }
+
+    public int calcNextLevelExperience() {
+        return (int) Math.floor(((this.level + 1) * 50) * 1.25);
+    }
+
+    public boolean canLevelUp() {
+        return this.experience >= nextLevelExperience;
+    }
+
+    private void levelUp() {
+        setLevel(this.level += 1);
+        setExperience(Math.max(0, experience - nextLevelExperience));
+        setNextLevelExperience(calcNextLevelExperience());
+        printLevelUpMessage();
+
+        if (canLevelUp()) {
+            levelUp();
+        }
+    }
+
+    private void printLevelUpMessage() {
+        System.out.println("You have gained a level! You are now level " + this.level + ".");
     }
 
 }
