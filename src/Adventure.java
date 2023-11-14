@@ -43,10 +43,8 @@ public class Adventure {
     private EncounterType selectEncounterType() {
         int randNum = random.nextInt(100) + 1;
         if (randNum <= DILEMMA_CHANCE_PERCENTAGE) {
-            // Adventure type is dilemma
             return EncounterType.DILEMMA;
         } else {
-            // Adventure type is battle
             return EncounterType.BATTLE;
         }
     }
