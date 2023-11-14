@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Game {
     public String playerName;
     private Scanner sc;
+    private Player player;
 
     public Game() {
         this.sc = new Scanner(System.in);
@@ -13,10 +14,12 @@ public class Game {
         System.out.println("What is your characters name? ");
         playerName = sc.nextLine();
 
-        selectClass();
-        System.out.println("Hello " + playerName + "! Welcome to the game! ");
+        String playerClass = selectClass();
+        System.out.println(playerClass);
 
-            
+        player = new Player(playerName, playerClass);
+
+        System.out.println("Hello " + player.getName() + " the " + player.getPlayerClass() + "! Welcome to the game! ");
     }
         
     //Metod som visar VärdshusMenyn.
@@ -81,15 +84,19 @@ public class Game {
         dilemma2.showDilemma();
         dilemma2.resolveDilemma(sc.nextInt());
     }
-    public void selectClass() {
-        String[] classes = {"Warrior", "Rogue"};
+
+    public String selectClass() {
+        String[] classes = { "Warrior", "Rogue" };
         System.out.println("Select your class:");
         for (int i = 0; i < classes.length; i++) {
-            System.out.println(i+1 + ". " + classes[i]);
+            System.out.println(i + 1 + ". " + classes[i]);
         }
 
         int classSelection = sc.nextInt();
-        System.out.println("Your class is " + classes[classSelection - 1]);
+        String selectedClass = classes[classSelection - 1];
+        System.out.println("Your class is " + selectedClass);
         sc.nextLine();
+
+        return selectedClass;
     }
 }
