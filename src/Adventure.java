@@ -33,6 +33,11 @@ public class Adventure {
         return enemy;
     }
 
+    private String getRandomDilemmaFromWorld() {
+        String dilemma = world.getDilemmas().get(random.nextInt(world.getDilemmas().size()));
+        return dilemma;
+    }
+
     private EncounterType selectEncounterType() {
         int randNum = random.nextInt(100) + 1;
         if (randNum <= DILEMMA_CHANCE_PERCENTAGE) {
