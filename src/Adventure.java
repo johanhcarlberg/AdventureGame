@@ -23,7 +23,9 @@ public class Adventure {
                 // TODO: Create combat instance
                 break;
             case DILEMMA:
-                // TODO: Select a dilemma from world and start dilemma
+                String dilemma = getRandomDilemmaFromWorld();
+                // TODO: Change from type String to type Dilemma once World has changed
+                // TODO: Create dilemma instance
                 break;
         }
     }
