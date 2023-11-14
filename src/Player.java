@@ -52,7 +52,7 @@ public class Player {
     }
 
     public int addExperience(int experienceToAdd) {
-        this.experience += experienceToAdd;
+        setExperience(this.experience + experienceToAdd);
         if (canLevelUp()) {
             levelUp();
         }
