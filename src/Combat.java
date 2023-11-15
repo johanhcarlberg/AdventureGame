@@ -14,15 +14,16 @@ public class Combat {
     int eAction;
 
 
-    public static void main(String[] args) {
-        Combat test = new Combat();
-        test.winner();
+    // public static void main(String[] args) {
+    //     Combat test = new Combat();
+    //     test.startCombat();
     
-    }
+    // }
 
     void startCombat(){
         
-        System.out.println("You encountered "+ enemy.getName());
+        System.out.println("\nYou encountered ");  
+        enemy.printStats();
         if (player.getLevel() < enemy.getLevel()){      //Loop som kollar vilken nivå motståndaren är i relation till spelaren och ger en print beroende på detta
             System.out.println("The "+enemy.getName()+" looks really strong! Better be careful!");
         }
@@ -157,4 +158,5 @@ public class Combat {
 
         // Ser om någon har gått ner till 0 hp
         // Avslutar combat (skriver ut xp gains och skickar spelaren vidare)
+
 }
