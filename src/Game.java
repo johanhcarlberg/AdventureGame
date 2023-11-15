@@ -21,6 +21,15 @@ public class Game {
 
         System.out.println("Hello " + player.getName() + " the " + player.getPlayerClass() + "! Welcome to the game! ");
     }
+
+    public void setupGame() {
+        World volcanoWorld = new World("Volcano");
+        EnemyTypes dragon = new EnemyTypes("Dragon");
+        volcanoWorld.getEnemies().add(dragon);
+        // Skapa alla fiendetyper
+        // Skapa alla världar
+        // Lägg till fienderna i rätt värld
+    }
         
     //Metod som visar VärdshusMenyn.
     public void showMenuAlternativesLoop(){
