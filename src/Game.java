@@ -23,6 +23,8 @@ public class Game {
         System.out.println("What is your characters name? ");
         currentGameState = GameState.CREATE_CHARACTER;
     }
+
+    private void createCharacter() {
         playerName = sc.nextLine();
 
         String playerClass = selectClass();
@@ -31,6 +33,7 @@ public class Game {
         player = new Player(playerName, playerClass);
 
         System.out.println("Hello " + player.getName() + " the " + player.getPlayerClass() + "! Welcome to the game! ");
+        currentGameState = GameState.INN;
     }
         
     //Metod som visar VärdshusMenyn.
