@@ -32,7 +32,8 @@ public class Game {
                     showMenuAlternativesLoop();
                     break;
                 case ADVENTURE:
-                    currentAdventure.startAdventure();
+                    Encounter encounter = currentAdventure.getEncounter();
+                    encounter.startEncounter();
                     currentGameState = GameState.INN;
                     break;
             }
