@@ -89,6 +89,10 @@ public class Player {
         setLevel(this.level += 1);
         setExperience(Math.max(0, experience - nextLevelExperience));
         setNextLevelExperience(calcNextLevelExperience());
+
+        setMaxHealth(maxHealth + 10);
+        restoreHealth();
+        
         printLevelUpMessage();
 
         if (canLevelUp()) {
