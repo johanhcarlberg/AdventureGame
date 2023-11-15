@@ -1,5 +1,13 @@
 import java.util.Scanner;
 
+enum GameState {
+    CREATE_CHARACTER,
+    INN,
+    ADVENTURE,
+    BATTLE,
+    DILEMMA,
+}
+
 public class Game {
     public String playerName;
     private Scanner sc;
