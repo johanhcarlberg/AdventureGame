@@ -22,6 +22,17 @@ public class Game {
         System.out.println("Welcome to the Magic House!");
         System.out.println("What is your characters name? ");
         currentGameState = GameState.CREATE_CHARACTER;
+
+        while(true) {
+            switch(currentGameState) {
+                case CREATE_CHARACTER:
+                    createCharacter();
+                    break;
+                case INN:
+                    showMenuAlternativesLoop();
+                    break;
+            }
+        }
     }
 
     private void createCharacter() {
