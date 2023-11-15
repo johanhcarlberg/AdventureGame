@@ -28,6 +28,8 @@ public class Adventure {
                 // TODO: Create dilemma instance
                 break;
         }
+
+        return new Combat();
     }
 
     private Enemy getRandomEnemyFromWorld() {
