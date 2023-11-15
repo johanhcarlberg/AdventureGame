@@ -56,7 +56,6 @@ public class Game {
     public void setupGame() {
         World volcanoWorld = new World("Volcano");
         EnemyTypes dragon = new EnemyTypes("Dragon");
-        volcanoWorld.getEnemies().add(dragon);
         // Skapa alla fiendetyper
         // Skapa alla världar
         // Lägg till fienderna i rätt värld
