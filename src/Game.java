@@ -12,6 +12,7 @@ public class Game {
     public String playerName;
     private Scanner sc;
     private Player player;
+    private GameState currentGameState;
 
     public Game() {
         this.sc = new Scanner(System.in);
