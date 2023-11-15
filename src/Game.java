@@ -1,7 +1,9 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Game {
     public String playerName;
+     
     Scanner sc = new Scanner(System.in);
 
     public void startGame() {
@@ -65,16 +67,27 @@ public class Game {
     }
 
 
-    //Denna metod bör göras om så att den istället tar emot ett dilemma och kör showDilemma och resolveDilemma på det valda dilemmat. Var ska dilemma skapas? I Värld 1-klassen?
+    //Denna metod bör göras om och flyttas.
     public void goIntoDilemma(){
-        Dilemma dilemma1 = new Dilemma("Du vandrar längs en smal stig när en dånande ljudvåg skär genom luften. Marken börjar vibrera under dina fötter och fåglarna flyger panikslagna upp från träden. Plötsligt brakar en kaskad av stenar och jord nedför sluttningen, och du inser att du befinner dig mitt i ett fruktansvärt jordskred."
-        , "Gömma dig under en tunna till höger", "Spring bakåt och ducka");
-        Dilemma dilemma2 = new Dilemma("Du ser ett mynt som ligger på marken. Vad gör du?", "Plockar upp och granskar myntet", "Låter det ligga. Sånt kan va farligt.");
 
-        dilemma1.showDilemma();
-        dilemma1.resolveDilemma(sc.nextInt());
+        //Skapar en arraylist med dilemma1-val som tar emot typen Answers.
+        //Detta görs för att denna lista sedan ska skickas med när man skapar själva dilemmat.
+        //ArrayList<Answer> dil1Choices = new ArrayList<Answer>();
 
-        dilemma2.showDilemma();
-        dilemma2.resolveDilemma(sc.nextInt());
+        //Skapar och lägger till new Answer till dil1choices-listan.
+        //dil1Choices.add(new Answer("Gömma dig under en tunna till höger", true));
+        //dil1Choices.add(new Answer("Spring bakåt och ducka", false));
+        //dil1Choices.add(new Answer("Spring mot skogen och hoppas på det bästa", false));
+
+        //När första dilemmat skapas skickar man med dilemmats beskrivning och listan på dilemma1-val.
+        //Dilemma dilemma1 = new Dilemma("Du vandrar längs en smal stig när en dånande ljudvåg skär genom luften. Marken börjar vibrera under dina fötter och fåglarna flyger panikslagna upp från träden. Plötsligt brakar en kaskad av stenar och jord nedför sluttningen, och du inser att du befinner dig mitt i ett fruktansvärt jordskred.", dil1Choices, player);
+       // Dilemma dilemma2 = new Dilemma("Du ser ett mynt som ligger på marken. Vad gör du?", "Plockar upp och granskar myntet", "Låter det ligga. Sånt kan va farligt.");
+
+        //dilemma1.showDilemma();
+        //dilemma1.resolveDilemma(sc.nextInt());
+
+       // dilemma2.showDilemma();
+        //dilemma2.resolveDilemma(sc.nextInt());
     }
+    
 }
