@@ -89,6 +89,13 @@ public class Player {
         return this.experience;
     }
 
+
+    public void takeDmg (int damage) {
+        System.out.println("Din hälsa innan dmg" + currentHealth);
+        currentHealth -= damage;
+        System.out.println("Din hälsa efter dmg:" + currentHealth);
+    }
+  
     public int getNextLevelExperience() {
         return this.nextLevelExperience;
     }
