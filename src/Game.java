@@ -21,13 +21,19 @@ public class Game {
         System.out.println("Welcome to the Magic House!");
         currentGameState = GameState.CREATE_CHARACTER; 
 
+        //  Huvudloop för spelet. Kollar vilken del av spelet spelaren är i just nu och styr spelet efter det.
         while(true) {
             switch(currentGameState) {
                 case CREATE_CHARACTER:
                     createCharacter();
+                    currentGameState = GameState.INN;
                     break;
                 case INN:
                     showMenuAlternativesLoop();
+                    break;
+                case ADVENTURE:
+                    currentAdventure.startAdventure();
+                    currentGameState = GameState.INN;
                     break;
             }
         }
