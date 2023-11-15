@@ -2,7 +2,7 @@
 import java.util.*;
 
 
-public class Combat {
+public class Combat implements Encounter {
     Player player = new Player("Jonas");
     Enemy enemy = new Enemy("Wolf");
     private Random random = new Random();
@@ -13,7 +13,9 @@ public class Combat {
     int pAction;
     int eAction;
 
-
+    public void startEncounter() {
+        startCombat();
+    }
     // public static void main(String[] args) {
     //     Combat test = new Combat();
     //     test.startCombat();
