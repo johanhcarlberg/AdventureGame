@@ -3,7 +3,7 @@ import java.util.*;
 
 
 public class Combat implements Encounter {
-    Player player = new Player("Jonas");
+    Player player = new Player("Jonas", "Warrior");
     Enemy enemy = new Enemy("Wolf");
     private Random random = new Random();
     Scanner actions = new Scanner(System.in);
