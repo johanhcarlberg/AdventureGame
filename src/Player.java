@@ -65,6 +65,22 @@ public class Player {
         return this.playerClass;
     }
 
+    public int getStrength() {
+        return this.strength;
+    }
+
+    private void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getDexterity() {
+        return this.dexterity;
+    }
+
+    private void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
+    }
+
     public int addExperience(int experienceToAdd) {
         setExperience(this.experience + experienceToAdd);
         if (canLevelUp()) {
