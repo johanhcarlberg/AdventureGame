@@ -1,9 +1,17 @@
 import java.util.Scanner;
 
+enum GameState {
+    CREATE_CHARACTER,
+    INN,
+    ADVENTURE,
+}
+
 public class Game {
     public String playerName;
     private Scanner sc;
     private Player player;
+    private GameState currentGameState; // Styr vilken del av spelet spelaren är i.
+    private Adventure currentAdventure;
 
     public Game() {
         this.sc = new Scanner(System.in);
@@ -11,6 +19,28 @@ public class Game {
 
     public void startGame() {
         System.out.println("Welcome to the Magic House!");
+        currentGameState = GameState.CREATE_CHARACTER; 
+
+        //  Huvudloop för spelet. Kollar vilken del av spelet spelaren är i just nu och styr spelet efter det.
+        while(true) {
+            switch(currentGameState) {
+                case CREATE_CHARACTER:
+                    createCharacter();
+                    currentGameState = GameState.INN;
+                    break;
+                case INN:
+                    showMenuAlternativesLoop();
+                    break;
+                case ADVENTURE:
+                    Encounter encounter = currentAdventure.getEncounter();
+                    encounter.startEncounter();
+                    currentGameState = GameState.INN;
+                    break;
+            }
+        }
+    }
+
+    private void createCharacter() {
         System.out.println("What is your characters name? ");
         playerName = sc.nextLine();
 
@@ -62,6 +92,9 @@ public class Game {
 
     public void goOnAdventure() {
         //Gå på äventyr
+        World world = new World("Volcano");
+        currentAdventure = new Adventure(new World("Volcano"));
+        currentGameState = GameState.ADVENTURE;
     }
     
     public void viewCharacterSheet() {

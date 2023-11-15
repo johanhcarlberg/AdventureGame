@@ -15,7 +15,7 @@ public class Adventure {
         this.random = new Random();
     }
 
-    public void startAdventure() {
+    public Encounter getEncounter() {
         EncounterType encounterType = selectEncounterType();
         switch (encounterType) {
             case BATTLE:
@@ -28,14 +28,22 @@ public class Adventure {
                 // TODO: Create dilemma instance
                 break;
         }
+
+        return new Combat();
     }
 
     private Enemy getRandomEnemyFromWorld() {
+        if(world.getEnemies().size() == 0) {
+            return null;
+        }
         Enemy enemy = world.getEnemies().get(random.nextInt(world.getEnemies().size()));
         return enemy;
     }
 
     private String getRandomDilemmaFromWorld() {
+        if(world.getDilemmas().size() == 0) {
+            return null;
+        }
         String dilemma = world.getDilemmas().get(random.nextInt(world.getDilemmas().size()));
         return dilemma;
     }
