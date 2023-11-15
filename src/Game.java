@@ -4,15 +4,14 @@ enum GameState {
     CREATE_CHARACTER,
     INN,
     ADVENTURE,
-    BATTLE,
-    DILEMMA,
 }
 
 public class Game {
     public String playerName;
     private Scanner sc;
     private Player player;
-    private GameState currentGameState;
+    private GameState currentGameState; // Styr vilken del av spelet spelaren är i.
+    private Adventure currentAdventure;
 
     public Game() {
         this.sc = new Scanner(System.in);
