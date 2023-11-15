@@ -49,7 +49,6 @@ public class Game {
         player = new Player(playerName, playerClass);
 
         System.out.println("Hello " + player.getName() + " the " + player.getPlayerClass() + "! Welcome to the game! ");
-        currentGameState = GameState.INN;
     }
         
     //Metod som visar VärdshusMenyn.
