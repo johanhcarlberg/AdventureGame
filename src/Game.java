@@ -21,6 +21,8 @@ public class Game {
     public void startGame() {
         System.out.println("Welcome to the Magic House!");
         System.out.println("What is your characters name? ");
+        currentGameState = GameState.CREATE_CHARACTER;
+    }
         playerName = sc.nextLine();
 
         String playerClass = selectClass();
