@@ -2,8 +2,8 @@
 import java.util.*;
 
 
-public class Combat {
-    Player player = new Player("Jonas");
+public class Combat implements Encounter {
+    Player player = new Player("Jonas", "Warrior");
     Enemy enemy = new Enemy("Wolf");
     private Random random = new Random();
     Scanner actions = new Scanner(System.in);
@@ -13,7 +13,9 @@ public class Combat {
     int pAction;
     int eAction;
 
-
+    public void startEncounter() {
+        startCombat();
+    }
     // public static void main(String[] args) {
     //     Combat test = new Combat();
     //     test.startCombat();
