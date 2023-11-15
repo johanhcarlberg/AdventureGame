@@ -19,21 +19,32 @@ public class Adventure {
         EncounterType encounterType = selectEncounterType();
         switch (encounterType) {
             case BATTLE:
-                // TODO: Select an enemy from world and start battle
+                Enemy enemy = getRandomEnemyFromWorld();
+                // TODO: Create combat instance
                 break;
             case DILEMMA:
-                // TODO: Select a dilemma from world and start dilemma
+                String dilemma = getRandomDilemmaFromWorld();
+                // TODO: Change from type String to type Dilemma once World has changed
+                // TODO: Create dilemma instance
                 break;
         }
+    }
+
+    private Enemy getRandomEnemyFromWorld() {
+        Enemy enemy = world.getEnemies().get(random.nextInt(world.getEnemies().size()));
+        return enemy;
+    }
+
+    private String getRandomDilemmaFromWorld() {
+        String dilemma = world.getDilemmas().get(random.nextInt(world.getDilemmas().size()));
+        return dilemma;
     }
 
     private EncounterType selectEncounterType() {
         int randNum = random.nextInt(100) + 1;
         if (randNum <= DILEMMA_CHANCE_PERCENTAGE) {
-            // Adventure type is dilemma
             return EncounterType.DILEMMA;
         } else {
-            // Adventure type is battle
             return EncounterType.BATTLE;
         }
     }
