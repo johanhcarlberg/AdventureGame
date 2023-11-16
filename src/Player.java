@@ -17,8 +17,8 @@ public class Player {
         this.currentHealth = this.maxHealth;
         this.nextLevelExperience = calcNextLevelExperience();
         this.playerClass = playerClass;
-        this.strength = 5;
-        this.dexterity = 5;
+        this.strength = playerClass.getInitialStrength();
+        this.dexterity = playerClass.getInitialDexterity();
     }
 
     public String getName() {
