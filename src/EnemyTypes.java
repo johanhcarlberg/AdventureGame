@@ -6,6 +6,7 @@
     private int strength;
     private int dexterity;
     private int experience;
+  
 
     public EnemyTypes(String name, int maxHealth, int strength, int dexterity, int experience){
         this.enemyName = name;
@@ -15,8 +16,8 @@
         this.experience = experience;        
     }
 
-    public Enemy create() {
-        return new Enemy(enemyName);
+    public Enemy create(int level) {
+        return new Enemy(enemyName, level, maxHealth, strength, dexterity, experience);
     }
 
 
