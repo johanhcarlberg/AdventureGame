@@ -8,7 +8,6 @@ public class Enemy {
     private int strength;
     private int dexterity;
     private int experience;
-    private Random random = new Random();
     
 
     public Enemy(String name, int level, int maxHealth, int strength, int dexterity, int experience){
@@ -49,8 +48,8 @@ public class Enemy {
         System.out.println("Name: " + getName());
         System.out.println("Level: " + getLevel());
         System.out.println("Health: " + getHealth());
-        System.out.println("Strength: " + getStr());
-        System.out.println("Dexterity: " + getDex());
+        System.out.println("Strength: " + getStrength());
+        System.out.println("Dexterity: " + getDexterity());
         System.out.println("Gives xp: " + getExperience());
     }
     
