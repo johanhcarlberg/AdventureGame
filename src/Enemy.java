@@ -11,14 +11,14 @@ public class Enemy {
     private Random random = new Random();
     
 
-    public Enemy(String name){
+    public Enemy(String name, int level, int maxHealth, int strength, int dexterity, int experience){
         this.name=name;
-        this.level = 1;
-        this.maxHealth = random.nextInt(5) + 6;
+        this.level = level;
+        this.maxHealth = maxHealth;
         this.currentHealth = this.maxHealth;
         this.strength = strength;
         this.dexterity = dexterity;
-        this.experience = (int) Math.floor(((this.level + 1) * 10) * 1.25);
+        this.experience = (int) Math.floor(((this.level + 1) * experience) * 1.25);
     }
 
     public String getName() {
