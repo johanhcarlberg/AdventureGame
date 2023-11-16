@@ -8,10 +8,12 @@ enum EncounterType {
 public class Adventure {
     private World world;
     private Random random;
+    private Player player;
     private final static int DILEMMA_CHANCE_PERCENTAGE = 15;
 
-    public Adventure(World world) {
+    public Adventure(World world, Player player) {
         this.world = world;
+        this.player = player;
         this.random = new Random();
     }
 
