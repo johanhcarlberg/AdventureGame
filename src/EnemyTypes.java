@@ -2,11 +2,17 @@
 
   public class EnemyTypes{
     String enemyName;
+    private int maxHealth;
+    private int strength;
+    private int dexterity;
 
-    public EnemyTypes(String name){
+    public EnemyTypes(String name, int maxHealth, int strength, int dexterity){
         this.enemyName = name;
-        
+        this.maxHealth = maxHealth;
+        this.strength = strength;
+        this.dexterity = dexterity;        
     }
+    
     public Enemy create() {
         return new Enemy(enemyName);
     }
