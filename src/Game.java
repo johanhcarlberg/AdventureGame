@@ -55,6 +55,9 @@ public class Game {
     }
 
     public void setupGame() {
+        CharacterClass.availableClasses.add(new CharacterClass("Warrior", 5, 3, 2, 2));
+        CharacterClass.availableClasses.add(new CharacterClass("Rogue", 3, 2, 5, 3));
+
         World waterWorld = new World("Water");
         EnemyTypes seaHorseType = new EnemyTypes("Seahorse", 10, 3, 4, 7);
         waterWorld.getEnemies().add(seaHorseType.create(2));
