@@ -18,7 +18,7 @@ public class Enemy {
         this.currentHealth = this.maxHealth;
         this.strength = strength;
         this.dexterity = dexterity;
-        this.experience = (int) Math.floor(((this.level + 1) * experience) * 1.25);
+        this.experience = (int) Math.floor(((this.level) * experience) * 1.25);
     }
 
     public String getName() {
@@ -29,12 +29,12 @@ public class Enemy {
         return currentHealth;
     }
 
-    public int getStr() {
-        return Str;
+    public int getStrength() {
+        return strength;
     }
 
-    public int getDex() {
-        return Dex;
+    public int getDexterity() {
+        return dexterity;
     }
 
      public int getLevel(){
