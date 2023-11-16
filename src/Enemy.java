@@ -5,8 +5,8 @@ public class Enemy {
     private int level;
     private int maxHealth;
     private int currentHealth;
-    private int Str;
-    private int Dex;
+    private int strength;
+    private int dexterity;
     private int experience;
     private Random random = new Random();
     
@@ -16,8 +16,8 @@ public class Enemy {
         this.level = 1;
         this.maxHealth = random.nextInt(5) + 6;
         this.currentHealth = this.maxHealth;
-        this.Str = random.nextInt(5) + 1;
-        this.Dex = random.nextInt(5) + 1;
+        this.strength = strength;
+        this.dexterity = dexterity;
         this.experience = (int) Math.floor(((this.level + 1) * 10) * 1.25);
     }
 
