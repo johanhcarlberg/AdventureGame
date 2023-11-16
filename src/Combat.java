@@ -5,18 +5,15 @@ import java.util.*;
 public class Combat implements Encounter {
     private Player player;
     private Enemy enemy;
+    private int pAction;
+    private int eAction;
+    private Random random = new Random();
+    private Scanner actions = new Scanner(System.in);
+
     public Combat(Player player, Enemy enemy){
         this.player = player;
         this.enemy = enemy;
-        enemyHP = enemy.getHealth();
     }
-    private Random random = new Random();
-    Scanner actions = new Scanner(System.in);
-
-   
-    int enemyHP;
-    int pAction;
-    int eAction;
 
     public void startEncounter() {
         startCombat();
@@ -45,7 +42,7 @@ public class Combat implements Encounter {
             System.out.println("The "+enemy.getName()+" looks pretty weak. Don't get too cocky though");
         }
   
-        while(player.getCurrentHealth() > 0 && enemyHP > 0){
+        while(player.getCurrentHealth() > 0 && enemy.getHealth() > 0){
             attacks();
             compareAttacks(pAction, eAction);
         }
@@ -68,7 +65,7 @@ public class Combat implements Encounter {
 
         System.out.println("\n-----------------------------------------------------\n");
         System.out.println("Your health: " + player.getCurrentHealth() + ".");
-        System.out.println("Enemy health: " + enemyHP + ".\n");
+        System.out.println("Enemy health: " + enemy.getHealth() + ".\n");
 
         System.out.println("What would you like to do?");
         for (int i = 0; i < actionsList.size(); i++) { // Skriver ut lista med alternativ för strid
@@ -162,7 +159,7 @@ public class Combat implements Encounter {
     }
 
     void enemyDmg(){
-        enemyHP = enemyHP - 1;
+        enemy.takeDmg(1);
     }
 
     void winner(){
