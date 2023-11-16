@@ -19,6 +19,7 @@ public class Game {
     }
 
     public void startGame() {
+        setupGame();
         System.out.println("Welcome to the Magic House!");
         currentGameState = GameState.CREATE_CHARACTER; 
 
