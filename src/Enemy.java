@@ -13,11 +13,11 @@ public class Enemy {
     public Enemy(String name, int level, int maxHealth, int strength, int dexterity, int experience){
         this.name=name;
         this.level = level;
-        this.maxHealth = maxHealth;
+        this.maxHealth = this.level * maxHealth;
         this.currentHealth = this.maxHealth;
-        this.strength = strength;
-        this.dexterity = dexterity;
-        this.experience = (int) Math.floor(((this.level) * experience) * 1.25);
+        this.strength = this.level * strength;
+        this.dexterity = this.level * dexterity;
+        this.experience = this.level * experience;
     }
 
     public String getName() {
