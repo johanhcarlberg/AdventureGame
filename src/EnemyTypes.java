@@ -1,7 +1,7 @@
   import java.util.*;
 
   public class EnemyTypes{
-    String enemyName;
+    private String enemyName;
     private int maxHealth;
     private int strength;
     private int dexterity;
@@ -20,7 +20,10 @@
         return new Enemy(enemyName, level, maxHealth, strength, dexterity, experience);
     }
 
-    
+    public String getEnemyName() {
+      return this.enemyName;
+    }
+
 }
   
   
