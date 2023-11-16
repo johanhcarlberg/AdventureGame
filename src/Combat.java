@@ -8,20 +8,24 @@ public class Combat implements Encounter {
     public Combat(Player player, Enemy enemy){
         this.player = player;
         this.enemy = enemy;
+        enemyHP = enemy.getHealth();
     }
     private Random random = new Random();
     Scanner actions = new Scanner(System.in);
 
    
-    int enemyHP = enemy.getHealth();
+    int enemyHP;
     int pAction;
     int eAction;
 
     public void startEncounter() {
         startCombat();
     }
+    
     // public static void main(String[] args) {
-    //     Combat test = new Combat();
+    //     Player player = new Player("Dave!", "Warrior");
+    //     Enemy enemy = new Enemy("Horse", 1,10,4,3,10);
+    //     Combat test = new Combat(player, enemy);
     //     test.startCombat();
     
     // }
