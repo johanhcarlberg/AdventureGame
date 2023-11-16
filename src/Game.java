@@ -142,17 +142,19 @@ public class Game {
         //dilemma2.resolveDilemma(sc.nextInt());
     }
     public String selectClass() {
-        String[] classes = { "Warrior", "Rogue" };
+        CharacterClass[] characterClasses = new CharacterClass[CharacterClass.availableClasses.size()];
+        CharacterClass.availableClasses.toArray(characterClasses);
+
         System.out.println("Select your class:");
-        for (int i = 0; i < classes.length; i++) {
-            System.out.println(i + 1 + ". " + classes[i]);
+        for (int i = 0; i < characterClasses.length; i++) {
+            System.out.println(i + 1 + ". " + characterClasses[i].getName());
         }
 
         int classSelection = sc.nextInt();
-        String selectedClass = classes[classSelection - 1];
-        System.out.println("Your class is " + selectedClass);
+        CharacterClass selectedClass = characterClasses[classSelection - 1];
+        System.out.println("Your class is " + selectedClass.getName());
         sc.nextLine();
 
-        return selectedClass;
+        return selectedClass.getName();
     }
 }
