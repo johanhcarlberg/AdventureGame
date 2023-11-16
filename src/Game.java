@@ -55,8 +55,9 @@ public class Game {
     }
 
     public void setupGame() {
-        World volcanoWorld = new World("Volcano");
-        EnemyTypes dragon = new EnemyTypes("Dragon");
+        World waterWorld = new World("Water");
+        EnemyTypes seaHorseType = new EnemyTypes("Seahorse", 10, 3, 4, 7);
+        waterWorld.getEnemies().add(seaHorseType.create(2));
         // Skapa alla fiendetyper
         // Skapa alla världar
         // Lägg till fienderna i rätt värld
