@@ -3,8 +3,12 @@ import java.util.*;
 
 
 public class Combat implements Encounter {
-    Player player = new Player("Jonas", "Warrior");
-    Enemy enemy = new Enemy("Wolf");
+    private Player player;
+    private Enemy enemy;
+    public Combat(Player player, Enemy enemy){
+        this.player = player;
+        this.enemy = enemy;
+    }
     private Random random = new Random();
     Scanner actions = new Scanner(System.in);
 
@@ -78,10 +82,9 @@ public class Combat implements Encounter {
     void compareAttacks(int p, int e) {
         // if-else (?) som jämför pAction mot eAction
         if(p == 0 && e == 0){
-            System.out.println("You fight eachother. You both take damage.");
-            playerDmg();
-            enemyDmg();
+            System.out.println("You fight eachother. It's a tough opponent!");
         }
+
         else if(p == 0 && e == 1){
             System.out.println(enemy.getName() + " blocks your attack and follows up with a counter. You take damage.");
             playerDmg();
