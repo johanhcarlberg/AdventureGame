@@ -5,20 +5,19 @@ public class Enemy {
     private int level;
     private int maxHealth;
     private int currentHealth;
-    private int Str;
-    private int Dex;
+    private int strength;
+    private int dexterity;
     private int experience;
-    private Random random = new Random();
     
 
-    public Enemy(String name){
+    public Enemy(String name, int level, int maxHealth, int strength, int dexterity, int experience){
         this.name=name;
-        this.level = 1;
-        this.maxHealth = random.nextInt(5) + 6;
+        this.level = level;
+        this.maxHealth = this.level * maxHealth;
         this.currentHealth = this.maxHealth;
-        this.Str = random.nextInt(5) + 1;
-        this.Dex = random.nextInt(5) + 1;
-        this.experience = (int) Math.floor(((this.level + 1) * 10) * 1.25);
+        this.strength = this.level * strength;
+        this.dexterity = this.level * dexterity;
+        this.experience = this.level * experience;
     }
 
     public String getName() {
@@ -29,12 +28,12 @@ public class Enemy {
         return currentHealth;
     }
 
-    public int getStr() {
-        return Str;
+    public int getStrength() {
+        return strength;
     }
 
-    public int getDex() {
-        return Dex;
+    public int getDexterity() {
+        return dexterity;
     }
 
      public int getLevel(){
@@ -49,8 +48,8 @@ public class Enemy {
         System.out.println("Name: " + getName());
         System.out.println("Level: " + getLevel());
         System.out.println("Health: " + getHealth());
-        System.out.println("Strength: " + getStr());
-        System.out.println("Dexterity: " + getDex());
+        System.out.println("Strength: " + getStrength());
+        System.out.println("Dexterity: " + getDexterity());
         System.out.println("Gives xp: " + getExperience());
     }
     

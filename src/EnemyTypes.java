@@ -1,34 +1,29 @@
   import java.util.*;
 
   public class EnemyTypes{
-    String enemyName;
-
-    public EnemyTypes(String name){
-        this.enemyName = name;
-        
-    }
-    public Enemy create() {
-        return new Enemy(enemyName);
-    }
-
-
-
+    private String enemyName;
+    private int maxHealth;
+    private int strength;
+    private int dexterity;
+    private int experience;
   
-  private List<String> waterEnemies = new ArrayList<>();{
-        waterEnemies.add("Seahorse");
-        waterEnemies.add("Shrimp");
-        waterEnemies.add("Shark");
-        waterEnemies.add("An Anemone");
-        waterEnemies.add("Jellyfish");
-  }
 
-    private List<String> fireEnemies = new ArrayList<>();{
-        fireEnemies.add("Fire Elemental");
-        fireEnemies.add("Lava Snail");
-        fireEnemies.add("Salamander");
-        fireEnemies.add("Stone Giant");
-        fireEnemies.add("Smoker");
+    public EnemyTypes(String name, int maxHealth, int strength, int dexterity, int experience){
+        this.enemyName = name;
+        this.maxHealth = maxHealth;
+        this.strength = strength;
+        this.dexterity = dexterity;
+        this.experience = experience;        
     }
+
+    public Enemy create(int level) {
+        return new Enemy(enemyName, level, maxHealth, strength, dexterity, experience);
+    }
+
+    public String getEnemyName() {
+      return this.enemyName;
+    }
+
 }
   
   
