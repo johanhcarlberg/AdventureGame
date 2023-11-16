@@ -36,4 +36,21 @@ public class CharacterClass {
     public int getDexterityPerLevel() {
         return dexterityPerLevel;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        if (!(obj instanceof CharacterClass)) {
+            return false;
+        }
+
+        CharacterClass cObj = (CharacterClass) obj;
+        if (cObj.name != this.name) {
+            return false;
+        }
+        return true;
+    } 
 }
