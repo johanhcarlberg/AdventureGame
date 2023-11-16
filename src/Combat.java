@@ -12,7 +12,7 @@ public class Combat implements Encounter {
     private Random random = new Random();
     Scanner actions = new Scanner(System.in);
 
-    int playerHP = player.getCurrentHealth();
+   
     int enemyHP = enemy.getHealth();
     int pAction;
     int eAction;
@@ -28,7 +28,7 @@ public class Combat implements Encounter {
 
     void startCombat(){
         
-        System.out.println("\nYou encountered ");  
+        System.out.println("\nYou encountered ");  // Ändra printen, ta bort full statprint
         enemy.printStats();
         if (player.getLevel() < enemy.getLevel()){      //Loop som kollar vilken nivå motståndaren är i relation till spelaren och ger en print beroende på detta
             System.out.println("The "+enemy.getName()+" looks really strong! Better be careful!");
@@ -40,11 +40,11 @@ public class Combat implements Encounter {
             System.out.println("The "+enemy.getName()+" looks pretty weak. Don't get too cocky though");
         }
   
-        while(playerHP > 0 && enemyHP > 0){
+        while(player.getCurrentHealth() > 0 && enemyHP > 0){
             attacks();
             compareAttacks(pAction, eAction);
         }
-        if (playerHP > 0){
+        if (player.getCurrentHealth() > 0){
             winner();
         }
         else{
@@ -62,14 +62,13 @@ public class Combat implements Encounter {
         actionsList.add("Try to run");
 
         System.out.println("\n-----------------------------------------------------\n");
-        System.out.println("Your health: " + playerHP + ".");
+        System.out.println("Your health: " + player.getCurrentHealth() + ".");
         System.out.println("Enemy health: " + enemyHP + ".\n");
 
         System.out.println("What would you like to do?");
         for (int i = 0; i < actionsList.size(); i++) { // Skriver ut lista med alternativ för strid
             System.out.println(i+1 + ". " + actionsList.get(i));
         }
-        System.out.print(">");
         pAction = actions.nextInt() - 1;
 
         //Random funktion för att välja motståndarens handling
@@ -137,12 +136,12 @@ public class Combat implements Encounter {
             System.out.println("You try to run away. Its no use. The enemy is too fast!");
         }
 
-        // Skriv ut vad som händer vid varje utfall.
+        // Skriva om Run funktionen
 
     }
 
     void playerDmg(){
-        playerHP = playerHP - 1;
+        player.takeDmg(1);
     }
 
     void enemyDmg(){
