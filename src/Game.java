@@ -47,7 +47,6 @@ public class Game {
         playerName = sc.nextLine();
 
         CharacterClass playerClass = selectClass();
-        System.out.println(playerClass);
 
         player = new Player(playerName, playerClass);
 
@@ -152,7 +151,6 @@ public class Game {
 
         int classSelection = sc.nextInt();
         CharacterClass selectedClass = characterClasses[classSelection - 1];
-        System.out.println("Your class is " + selectedClass.getName());
         sc.nextLine();
 
         return selectedClass;
