@@ -5,25 +5,23 @@ import java.util.*;
 public class Combat implements Encounter {
     private Player player;
     private Enemy enemy;
+    private int pAction;
+    private int eAction;
+    private Random random = new Random();
+    private Scanner actions = new Scanner(System.in);
+
     public Combat(Player player, Enemy enemy){
         this.player = player;
         this.enemy = enemy;
-        enemyHP = enemy.getHealth();
     }
-    private Random random = new Random();
-    Scanner actions = new Scanner(System.in);
-
-   
-    int enemyHP;
-    int pAction;
-    int eAction;
 
     public void startEncounter() {
         startCombat();
     }
     
     // public static void main(String[] args) {
-    //     Player player = new Player("Dave!", "Warrior");
+    //     CharacterClass.availableClasses.add(new CharacterClass("Warrior", 5, 3, 2, 2));
+    //     Player player = new Player("Dave!", CharacterClass.availableClasses.get(0));
     //     Enemy enemy = new Enemy("Horse", 1,10,4,3,10);
     //     Combat test = new Combat(player, enemy);
     //     test.startCombat();
@@ -44,7 +42,7 @@ public class Combat implements Encounter {
             System.out.println("The "+enemy.getName()+" looks pretty weak. Don't get too cocky though");
         }
   
-        while(player.getCurrentHealth() > 0 && enemyHP > 0){
+        while(player.getCurrentHealth() > 0 && enemy.getHealth() > 0){
             attacks();
             compareAttacks(pAction, eAction);
         }
@@ -61,13 +59,13 @@ public class Combat implements Encounter {
        
         List<String> actionsList = new ArrayList<>(); //Lista med alternativ för strid
         actionsList.add("Attack");
-        actionsList.add("Block");
+        actionsList.add("Counter");
         actionsList.add("Fake out");
         actionsList.add("Try to run");
 
         System.out.println("\n-----------------------------------------------------\n");
         System.out.println("Your health: " + player.getCurrentHealth() + ".");
-        System.out.println("Enemy health: " + enemyHP + ".\n");
+        System.out.println("Enemy health: " + enemy.getHealth() + ".\n");
 
         System.out.println("What would you like to do?");
         for (int i = 0; i < actionsList.size(); i++) { // Skriver ut lista med alternativ för strid
@@ -85,59 +83,71 @@ public class Combat implements Encounter {
     void compareAttacks(int p, int e) {
         // if-else (?) som jämför pAction mot eAction
         if(p == 0 && e == 0){
-            System.out.println("You fight eachother. It's a tough opponent!");
+            System.out.println("You fight eachother. It's a tough opponent! Luckily you didn't take any damage.");
+            System.out.println();
         }
 
         else if(p == 0 && e == 1){
-            System.out.println(enemy.getName() + " blocks your attack and follows up with a counter. You take damage.");
+            System.out.println(enemy.getName() + " counters you! You take damage.");
+            System.out.println();
             playerDmg();
         }
 
         else if(p == 0 && e == 2){
             System.out.println(enemy.getName() + " tries to fake you out. The " + enemy.getName() + " fails and take damage");
+            System.out.println();
             enemyDmg();
         }
 
         else if(p == 1 && e == 0){
-            System.out.println("You block the enemy attack and counter. The enemy takes damage.");
+            System.out.println("You counter the enemy attack. The enemy takes damage.");
+            System.out.println();
             enemyDmg();
         }
 
         else if(p == 1 && e == 1){
             System.out.println("You both stare at eachother intensely waiting for the other to move!");
+            System.out.println();
         }
 
         else if(p == 1 && e == 2){
-            System.out.println("You try to block but the enemy fakes you out! You take damage!");
+            System.out.println("You try to counter but the enemy fakes you out! You take damage!");
+            System.out.println();
             playerDmg();
         }
 
         else if(p == 2 && e == 0){
             System.out.println("You try to fake out the enemy. It sees right through you. You take damage.");
+            System.out.println();
             playerDmg();
         }
 
         else if(p == 2 && e == 1){
-            System.out.println("The enemy tries to block but your attack slips through anyway! You deal damage");
+            System.out.println("The enemy tries to block but your attack slips through anyway! The enemy takes damage!");
+            System.out.println();
             enemyDmg();
         }
 
         else if(p == 2 && e == 2){
-            System.out.println("You both miss eachother. No one takes any damage");
+            System.out.println("You both miss! What!? How!?");
+            System.out.println();
         }
 
         else if(p == 3 && e == 0){
             System.out.println("You turn to run away but the " + enemy.getName() + " catches you. You take damage");
+            System.out.println();
             playerDmg();
         }
 
         else if(p == 3 && e == 1){
             System.out.println("You successfully run away");
+            System.out.println();
             
         }
 
         else if(p == 3 && e == 2){
             System.out.println("You try to run away. Its no use. The enemy is too fast!");
+            System.out.println();
         }
 
         // Skriva om Run funktionen
@@ -149,7 +159,7 @@ public class Combat implements Encounter {
     }
 
     void enemyDmg(){
-        enemyHP = enemyHP - 1;
+        enemy.takeDmg(1);
     }
 
     void winner(){
