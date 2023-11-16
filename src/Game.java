@@ -106,7 +106,7 @@ public class Game {
     public void goOnAdventure() {
         //Gå på äventyr
         World world = new World("Volcano");
-        currentAdventure = new Adventure(new World("Volcano"));
+        currentAdventure = new Adventure(new World("Volcano"), player);
         currentGameState = GameState.ADVENTURE;
     }
     
