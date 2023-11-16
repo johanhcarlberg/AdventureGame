@@ -5,11 +5,11 @@ public class Player {
     private int nextLevelExperience;
     private int maxHealth;
     private int currentHealth;
-    private String playerClass;
+    private CharacterClass playerClass;
     private int strength;
     private int dexterity;
 
-    public Player(String name, String playerClass) {
+    public Player(String name, CharacterClass playerClass) {
         this.name = name;
         this.level = 1;
         this.experience = 0;
@@ -17,8 +17,8 @@ public class Player {
         this.currentHealth = this.maxHealth;
         this.nextLevelExperience = calcNextLevelExperience();
         this.playerClass = playerClass;
-        this.strength = 5;
-        this.dexterity = 5;
+        this.strength = playerClass.getInitialStrength();
+        this.dexterity = playerClass.getInitialDexterity();
     }
 
     public String getName() {
@@ -61,7 +61,7 @@ public class Player {
         this.experience = experience;
     }
 
-    public String getPlayerClass() {
+    public CharacterClass getPlayerClass() {
         return this.playerClass;
     }
 

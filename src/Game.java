@@ -46,12 +46,11 @@ public class Game {
         System.out.println("What is your characters name? ");
         playerName = sc.nextLine();
 
-        String playerClass = selectClass();
-        System.out.println(playerClass);
+        CharacterClass playerClass = selectClass();
 
         player = new Player(playerName, playerClass);
 
-        System.out.println("Hello " + player.getName() + " the " + player.getPlayerClass() + "! Welcome to the game! ");
+        System.out.println("Hello " + player.getName() + " the " + player.getPlayerClass().getName() + "! Welcome to the game! ");
     }
 
     public void setupGame() {
@@ -141,7 +140,7 @@ public class Game {
        // dilemma2.showDilemma();
         //dilemma2.resolveDilemma(sc.nextInt());
     }
-    public String selectClass() {
+    public CharacterClass selectClass() {
         CharacterClass[] characterClasses = new CharacterClass[CharacterClass.availableClasses.size()];
         CharacterClass.availableClasses.toArray(characterClasses);
 
@@ -152,9 +151,8 @@ public class Game {
 
         int classSelection = sc.nextInt();
         CharacterClass selectedClass = characterClasses[classSelection - 1];
-        System.out.println("Your class is " + selectedClass.getName());
         sc.nextLine();
 
-        return selectedClass.getName();
+        return selectedClass;
     }
 }
