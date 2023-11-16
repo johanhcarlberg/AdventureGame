@@ -44,6 +44,10 @@ public class Enemy {
         return experience;
     }
 
+    public void takeDmg (int damage) {
+        currentHealth -= damage;
+    }
+
     public void printStats(){
         System.out.println("Name: " + getName());
         System.out.println("Level: " + getLevel());
