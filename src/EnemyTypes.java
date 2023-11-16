@@ -5,14 +5,16 @@
     private int maxHealth;
     private int strength;
     private int dexterity;
+    private int experience;
 
-    public EnemyTypes(String name, int maxHealth, int strength, int dexterity){
+    public EnemyTypes(String name, int maxHealth, int strength, int dexterity, int experience){
         this.enemyName = name;
         this.maxHealth = maxHealth;
         this.strength = strength;
-        this.dexterity = dexterity;        
+        this.dexterity = dexterity;
+        this.experience = experience;        
     }
-    
+
     public Enemy create() {
         return new Enemy(enemyName);
     }
