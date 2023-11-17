@@ -13,6 +13,7 @@ public class Game {
     private Player player;
     private GameState currentGameState; // Styr vilken del av spelet spelaren är i.
     private Adventure currentAdventure;
+    private World currentWorld;
 
     public Game() {
         this.sc = new Scanner(System.in);
