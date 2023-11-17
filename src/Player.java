@@ -95,6 +95,13 @@ public class Player {
         currentHealth -= damage;
         System.out.println("Din hälsa efter dmg:" + currentHealth);
     }
+
+    public void increaseHealthScore (int healthPoints) {
+        System.out.println("Din hälsopoäng innan är" + currentHealth);
+        currentHealth += healthPoints;
+        System.out.println("Din hälsopoäng efter:" + currentHealth);
+    }
+
   
     public int getNextLevelExperience() {
         return this.nextLevelExperience;
