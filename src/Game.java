@@ -13,6 +13,7 @@ public class Game {
     private Player player;
     private GameState currentGameState; // Styr vilken del av spelet spelaren är i.
     private Adventure currentAdventure;
+    private World currentWorld;
 
     public Game() {
         this.sc = new Scanner(System.in);
@@ -58,11 +59,14 @@ public class Game {
         CharacterClass.availableClasses.add(new CharacterClass("Rogue", 3, 2, 5, 3));
 
         World waterWorld = new World("Water");
+        
         EnemyTypes seaHorseType = new EnemyTypes("Seahorse", 10, 3, 4, 7);
         waterWorld.getEnemies().add(seaHorseType.create(2));
         // Skapa alla fiendetyper
         // Skapa alla världar
         // Lägg till fienderna i rätt värld
+
+        currentWorld = waterWorld; // Spelaren börjar i vattenvärlden.
     }
         
     //Metod som visar VärdshusMenyn.
@@ -105,8 +109,7 @@ public class Game {
 
     public void goOnAdventure() {
         //Gå på äventyr
-        World world = new World("Volcano");
-        currentAdventure = new Adventure(new World("Volcano"), player);
+        currentAdventure = new Adventure(currentWorld, player);
         currentGameState = GameState.ADVENTURE;
     }
     
