@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 enum GameState {
     CREATE_CHARACTER,
