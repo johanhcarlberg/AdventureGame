@@ -8,10 +8,12 @@ enum EncounterType {
 public class Adventure {
     private World world;
     private Random random;
-    private final static int DILEMMA_CHANCE_PERCENTAGE = 15;
+    private Player player;
+    private final static int DILEMMA_CHANCE_PERCENTAGE = 0;
 
-    public Adventure(World world) {
+    public Adventure(World world, Player player) {
         this.world = world;
+        this.player = player;
         this.random = new Random();
     }
 
@@ -20,16 +22,16 @@ public class Adventure {
         switch (encounterType) {
             case BATTLE:
                 Enemy enemy = getRandomEnemyFromWorld();
+                return new Combat(player, enemy);
                 // TODO: Create combat instance
-                break;
             case DILEMMA:
                 String dilemma = getRandomDilemmaFromWorld();
                 // TODO: Change from type String to type Dilemma once World has changed
                 // TODO: Create dilemma instance
-                break;
+                return null;
+            default:
+                return null;
         }
-
-        return new Combat();
     }
 
     private Enemy getRandomEnemyFromWorld() {

@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.ArrayList;
 
 enum GameState {
     CREATE_CHARACTER,
@@ -13,6 +12,7 @@ public class Game {
     private Player player;
     private GameState currentGameState; // Styr vilken del av spelet spelaren är i.
     private Adventure currentAdventure;
+    private World currentWorld;
 
     public Game() {
         this.sc = new Scanner(System.in);
@@ -46,22 +46,26 @@ public class Game {
         System.out.println("What is your characters name? ");
         playerName = sc.nextLine();
 
-        String playerClass = selectClass();
-        System.out.println(playerClass);
+        CharacterClass playerClass = selectClass();
 
         player = new Player(playerName, playerClass);
 
-        System.out.println("Hello " + player.getName() + " the " + player.getPlayerClass() + "! Welcome to the game! ");
+        System.out.println("Hello " + player.getName() + " the " + player.getPlayerClass().getName() + "! Welcome to the game! ");
     }
 
     public void setupGame() {
-        World waterWorld = new World("Water");
+        CharacterClass.availableClasses.add(new CharacterClass("Warrior", 5, 3, 2, 2));
+        CharacterClass.availableClasses.add(new CharacterClass("Rogue", 3, 2, 5, 3));
+
+        World.availableWorlds.add(new World("Water"));
+        World wateWorld = World.availableWorlds.get(0);
+        
         EnemyTypes seaHorseType = new EnemyTypes("Seahorse", 10, 3, 4, 7);
-        waterWorld.getEnemies().add(seaHorseType.create(2));
+
+        wateWorld.getEnemies().add(seaHorseType.create(2));
         // Skapa alla fiendetyper
         // Skapa alla världar
         // Lägg till fienderna i rätt värld
-
         
         //Skapar olika arraylists med dilemma-val som tar emot typen Answers.
         //Detta görs för att denna lista sedan ska skickas med när man skapar själva dilemmat.
@@ -95,6 +99,8 @@ public class Game {
          dilemmas.add(new Dilemma("Du ser ett mynt som ligger på marken.", dil2Choices, player));
          dilemmas.add(new Dilemma("Du möter en mystisk man som frågar dig efter vägen till himlen. Vad svarar du?", dil3Choices, player));
          dilemmas.add(new Dilemma("Plötsligt får du syn på en fågel som flyger rakt mot dig.", dil4Choices, player));
+      
+        currentWorld = wateWorld; // Spelaren börjar i vattenvärlden.
     }
     
         
@@ -138,8 +144,7 @@ public class Game {
 
     public void goOnAdventure() {
         //Gå på äventyr
-        World world = new World("Volcano");
-        currentAdventure = new Adventure(new World("Volcano"));
+        currentAdventure = new Adventure(currentWorld, player);
         currentGameState = GameState.ADVENTURE;
     }
     
@@ -155,16 +160,17 @@ public class Game {
         //Nu har jag tappat bort mig och vet inte när denna ska användas.
         
     }
-    public String selectClass() {
-        String[] classes = { "Warrior", "Rogue" };
+    public CharacterClass selectClass() {
+        CharacterClass[] characterClasses = new CharacterClass[CharacterClass.availableClasses.size()];
+        CharacterClass.availableClasses.toArray(characterClasses);
+
         System.out.println("Select your class:");
-        for (int i = 0; i < classes.length; i++) {
-            System.out.println(i + 1 + ". " + classes[i]);
+        for (int i = 0; i < characterClasses.length; i++) {
+            System.out.println(i + 1 + ". " + characterClasses[i].getName());
         }
 
         int classSelection = sc.nextInt();
-        String selectedClass = classes[classSelection - 1];
-        System.out.println("Your class is " + selectedClass);
+        CharacterClass selectedClass = characterClasses[classSelection - 1];
         sc.nextLine();
 
         return selectedClass;
