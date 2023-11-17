@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.ArrayList;
 
 enum GameState {
     CREATE_CHARACTER,
@@ -58,15 +57,17 @@ public class Game {
         CharacterClass.availableClasses.add(new CharacterClass("Warrior", 5, 3, 2, 2));
         CharacterClass.availableClasses.add(new CharacterClass("Rogue", 3, 2, 5, 3));
 
-        World waterWorld = new World("Water");
+        World.availableWorlds.add(new World("Water"));
+        World wateWorld = World.availableWorlds.get(0);
         
         EnemyTypes seaHorseType = new EnemyTypes("Seahorse", 10, 3, 4, 7);
-        waterWorld.getEnemies().add(seaHorseType.create(2));
+
+        wateWorld.getEnemies().add(seaHorseType.create(2));
         // Skapa alla fiendetyper
         // Skapa alla världar
         // Lägg till fienderna i rätt värld
 
-        currentWorld = waterWorld; // Spelaren börjar i vattenvärlden.
+        currentWorld = wateWorld; // Spelaren börjar i vattenvärlden.
     }
         
     //Metod som visar VärdshusMenyn.
