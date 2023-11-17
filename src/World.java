@@ -4,6 +4,7 @@ public class World {
     private String theme;
     private List<Enemy> enemies;
     private List<String> dilemmas;
+    public static List<World> availableWorlds = new ArrayList<>();
 
     public World(String theme) {
         this.theme = theme;
