@@ -126,6 +126,9 @@ public class Player {
 
         setMaxHealth(maxHealth + 10);
         restoreHealth();
+
+        setStrength(strength + playerClass.getStrengthPerLevel());
+        setDexterity(dexterity + playerClass.getDexterityPerLevel());
         
         printLevelUpMessage();
 
