@@ -98,38 +98,38 @@ public class Game {
         ArrayList<Answer> dil4Choices = new ArrayList<Answer>();
 
         //Skapar och lägger till new Answer till dil1choices-listan.
-        dil1Choices.add(new Answer("Gömma dig under en tunna till höger", true));
-        dil1Choices.add(new Answer("Spring bakåt och ducka", false));
-        dil1Choices.add(new Answer("Spring mot skogen och hoppas på det bästa", false));
+        dil1Choices.add(new Answer("Hide behind a barrel to your right", true));
+        dil1Choices.add(new Answer("Run backwards and duck", false));
+        dil1Choices.add(new Answer("Run towards the forest and hope for the best", false));
 
         //Skapar och lägger till new Answer till dil2choices-listan.
-        dil2Choices.add(new Answer("Tar myntet och stoppar det i fickan. Yay pengar!", true));
-        dil2Choices.add(new Answer("Låter det vara. Mynt är smutsiga", false));
+        dil2Choices.add(new Answer("Take the coin and put it in the pocket. Yay money!", true));
+        dil2Choices.add(new Answer("Leave it be, coins are filthy", false));
         
         //Skapar och lägger till new Answer till dil3choices-listan.
-        dil3Choices.add(new Answer("Du drar ditt svärd och spetsar mannen. Du tänker att nu är han i himlen och bör vara nöjd.", true));
-        dil3Choices.add(new Answer("Med en klapp på axeln hänvisar du honom till närmsta langare", false));
-        dil3Choices.add(new Answer("Du ignorerar den mystiska mannen och går vidare.", false));
+        dil3Choices.add(new Answer("You pull out your sword and impale the man. You believe he is in heaven and should be happy now.", true));
+        dil3Choices.add(new Answer("With a pat on the shoulder you guide him to the nearest dealer", false));
+        dil3Choices.add(new Answer("You ignore the man and walk past him.", false));
 
         //Skapar och lägger till new Answer till dil4choices-listan.
-        dil4Choices.add(new Answer("Ducka undan fågelns attack. Ta snabbt upp lite frön ur fickan och strö ut över marken", true));
-        dil4Choices.add(new Answer("Fäkta med armarna och skrik i hopp om att avvärja fågels attack", false));
-        dil4Choices.add(new Answer("Stålsätt dig och invänta krock med fågeln.", false));
+        dil4Choices.add(new Answer("Dodge the birds attack. Quickly take some seeds out of your pocket and scatter on the ground.", true));
+        dil4Choices.add(new Answer("Flail with your arms and scream in hopes it is warding off the birds attack!", false));
+        dil4Choices.add(new Answer("Brace yourself and wait for the collision with the bird!.", false));
 
         //Dilemman läggs till wateWorld. När dilemman skapas skickar man med dilemmats beskrivning och listan på dilemma-val. + spelaren
-         wateWorld.getDilemmas().add(new Dilemma("Du vandrar längs en smal stig när en dånande ljudvåg skär genom luften. " +
-         "Marken börjar vibrera under dina fötter och fåglarna flyger panikslagna upp från träden. " +
-         "Plötsligt brakar en kaskad av stenar och jord nedför sluttningen, och du inser att du befinner " +
-         " dig mitt i ett fruktansvärt jordskred.", dil1Choices));
-         wateWorld.getDilemmas().add(new Dilemma("Du vandrar längs en smal stig när en dånande ljudvåg skär genom luften. " +
-         "Marken börjar vibrera under dina fötter och fåglarna flyger panikslagna upp från träden. " +
-         "Plötsligt brakar en kaskad av stenar och jord nedför sluttningen, och du inser att du befinner " +
-         " dig mitt i ett fruktansvärt jordskred.", dil1Choices));
-         wateWorld.getDilemmas().add(new Dilemma("Du ser ett mynt som ligger på marken.", dil2Choices));
+         wateWorld.getDilemmas().add(new Dilemma("You are walking along a narrow path when a high pitched sound wave cuts through the air. " +
+         "The ground starts to vibrate beneath your feet and startled birds fly up from the trees. " +
+         "Suddenly, a cascade of rocks and dirt crashes down the slope and you realize you are " +
+         "in the middle of a terrible landslide.", dil1Choices));
+         wateWorld.getDilemmas().add(new Dilemma("You are walking along a narrow path when a high pitched sound wave cuts through the air. " +
+         "The ground starts to vibrate beneath your feet and startled birds fly up from the trees. " + // är det menat att vara tvålikadana? 
+         "Suddenly, a cascade of rocks and dirt crashes down the slope and you realize you are " +
+         " in the middle of a terrible landslide.", dil1Choices));
+         wateWorld.getDilemmas().add(new Dilemma("You see a coin on the ground", dil2Choices));
 
          //Lägger till två dilemman till volcanWorld
-         volcanWorld.getDilemmas().add(new Dilemma("Du möter en mystisk man som frågar dig efter vägen till himlen. Vad svarar du?", dil3Choices));
-         volcanWorld.getDilemmas().add(new Dilemma("Plötsligt får du syn på en fågel som flyger rakt mot dig.", dil4Choices));
+         volcanWorld.getDilemmas().add(new Dilemma("You meet a mysterious man who asks you the way to heaven. What do you answer? ", dil3Choices));
+         volcanWorld.getDilemmas().add(new Dilemma("Suddenly you see a bird flying straight towards you. What do you do? ", dil4Choices));
       
         currentWorld = wateWorld; // Spelaren börjar i vattenvärlden.
 
@@ -142,7 +142,7 @@ public class Game {
          while (true){ //Loopen körs tills ett break kommer.
             showInnAlternatives();
             int userInputChoiceInMenu = Input.getIntegerInRange(1, 3);
-            System.out.println("Du valde alternativ nummer: " + userInputChoiceInMenu);
+            System.out.println("You selected alternative number: " + userInputChoiceInMenu);
 
             if (userInputChoiceInMenu == 1){
                 goOnAdventure();
@@ -157,7 +157,7 @@ public class Game {
                 break; 
             }
             else {
-                System.out.println("Du har angivit ett felaktiskt alternativ. Försök igen.");
+                System.out.println("You have entered an incorrect option. Try again. ");
                     
             }
 
@@ -168,10 +168,10 @@ public class Game {
        
 
     public void showInnAlternatives() {
-        System.out.println("Du är nu i värdshuset. Ange siffran som hör till ditt val.");
-        System.out.println("1: Gå på äventyr");
-        System.out.println("2: Granska dina egenskaper");
-        System.out.println("3: Vila och återställ din hälsa");
+        System.out.println("You are now in the inn. Enter the number of your choice:");
+        System.out.println("1: Go on an adventure.");
+        System.out.println("2: Show your character sheet");
+        System.out.println("3: Rest and regain your health");
     }
 
     public void goOnAdventure() {
