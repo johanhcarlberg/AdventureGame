@@ -11,7 +11,7 @@ public class Dilemma {
     //Konstruktor för att skapa dilemman. Konstruktor tar emot en String description och en arrayList av answer. Den kan alltså ta emot obegränsat antal choices.
     public Dilemma(String description, ArrayList<Answer> choices, Player player) {
         this.description = description;
-        descriptionSameForEveryDilemma = "Du befinner dig i ett knivigt dilemma och måste ta ett av " + choices.size() + " val. Var extra noga med att mata in rätt alternativ. Det kan komma att straffa sig om du inte är noggrann...";
+        descriptionSameForEveryDilemma = "Du befinner dig i ett knivigt dilemma och måste ta 1 av " + choices.size() + " val. Var extra noga med att mata in rätt alternativ. Det kan komma att straffa sig om du inte är noggrann...";
         this.listOfChoices = choices;
         this.player = player;
     }
@@ -23,6 +23,7 @@ public class Dilemma {
         // Använd den inbyggda funktionen som arraylist ärver från collections och shuffla listan av val.
         Collections.shuffle(listOfChoices);
 
+        //Denna loop presenterar den shufflade listan genom att ta index på aktuell choice + 1 tillsammans med den tillhörande texten.
         for (int i=0; i < listOfChoices.size(); i++) {
 
             Answer tillfalligAnswer = listOfChoices.get(i); // Hämtar Answer på vald index och lägger den till tillfalligAnswer
@@ -39,10 +40,10 @@ public class Dilemma {
     public void resolveDilemma(int choice) {
         
     
-            //Kontrollerar först om choice är en giltig siffra - alltså mellan 1 och choices längd. Är den inte det kommer  
+            //Kontrollerar först om choice är en giltig siffra - alltså mellan 1 och choices längd. Är den inte det kommer sista else att köras 
             if(choice <= listOfChoices.size()) {
 
-                if(listOfChoices.get(choice -1).isCorrect()) {
+                if(listOfChoices.get(choice -1).isCorrect()) { //minus 1 eftersom vi då får rätt index i listan.
 
                     System.out.println("Bra val! Du överlever och får som belöning ett hälsopoäng.");
                     System.out.println("");
