@@ -59,11 +59,33 @@ public class Game {
         CharacterClass.availableClasses.add(new CharacterClass("Rogue", 3, 2, 5, 3));
 
         World.availableWorlds.add(new World("Water"));
+        World.availableWorlds.add(new World("Volcano"));
         World wateWorld = World.availableWorlds.get(0);
+        World volcanWorld = World.availableWorlds.get(1);
         
         EnemyTypes seaHorseType = new EnemyTypes("Seahorse", 10, 3, 4, 7);
+        EnemyTypes sharkType = new EnemyTypes("Shark", 15, 5, 5, 10);
+        EnemyTypes anemoneType = new EnemyTypes("Anemone", 2, 2, 1, 3);
+        EnemyTypes jellyfishType = new EnemyTypes("Jellyfish", 10, 4, 3, 7);
+        EnemyTypes starfishType = new EnemyTypes("Starfish", 8, 2, 3, 5);
+        
+        EnemyTypes fireElementalType = new EnemyTypes("Fire Elemental", 10, 4, 3, 7);
+        EnemyTypes lavaSnailType = new EnemyTypes("Lava Snail", 4, 4, 1, 5);
+        EnemyTypes salamanderType = new EnemyTypes("Salamander", 10, 3, 4, 7);
+        EnemyTypes stoneGiantType = new EnemyTypes("Stone Giant", 12, 5, 3, 8);
+        EnemyTypes dragonType = new EnemyTypes("Dragon", 15, 5, 5, 10);
 
-        wateWorld.getEnemies().add(seaHorseType.create(2));
+        wateWorld.getEnemies().add(seaHorseType.create(1));
+        wateWorld.getEnemies().add(sharkType.create(1));
+        wateWorld.getEnemies().add(anemoneType.create(1));
+        wateWorld.getEnemies().add(jellyfishType.create(1));
+        wateWorld.getEnemies().add(starfishType.create(1));
+
+        volcanWorld.getEnemies().add(fireElementalType.create(1));
+        volcanWorld.getEnemies().add(lavaSnailType.create(1));
+        volcanWorld.getEnemies().add(salamanderType.create(1));
+        volcanWorld.getEnemies().add(stoneGiantType.create(1));
+        volcanWorld.getEnemies().add(dragonType.create(1));
         // Skapa alla fiendetyper
         // Skapa alla världar
         // Lägg till fienderna i rätt värld
