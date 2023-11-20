@@ -45,7 +45,7 @@ public class Game {
 
     private void createCharacter() {
         System.out.println("What is your characters name? ");
-        playerName = sc.nextLine();
+        playerName = Input.getString();
 
         CharacterClass playerClass = selectClass();
 
@@ -132,7 +132,7 @@ public class Game {
            
          while (true){ //Loopen körs tills ett break kommer.
             showInnAlternatives();
-            int userInputChoiceInMenu = sc.nextInt(); 
+            int userInputChoiceInMenu = Input.getIntegerInRange(1, 3);
             System.out.println("Du valde alternativ nummer: " + userInputChoiceInMenu);
 
             if (userInputChoiceInMenu == 1){
@@ -195,9 +195,8 @@ public class Game {
             System.out.println(i + 1 + ". " + characterClasses[i].getName());
         }
 
-        int classSelection = sc.nextInt();
+        int classSelection = Input.getIntegerInRange(1, characterClasses.length);
         CharacterClass selectedClass = characterClasses[classSelection - 1];
-        sc.nextLine();
 
         return selectedClass;
     }
