@@ -9,7 +9,7 @@ public class Adventure {
     private World world;
     private Random random;
     private Player player;
-    private final static int DILEMMA_CHANCE_PERCENTAGE = 0;
+    private final static int DILEMMA_CHANCE_PERCENTAGE = 100;
 
     public Adventure(World world, Player player) {
         this.world = world;
@@ -25,7 +25,7 @@ public class Adventure {
                 return new Combat(player, enemy);
                 // TODO: Create combat instance
             case DILEMMA:
-                Dilemma dilemma = getRandomDilemmaFromWorld();
+                Dilemma dilemma = getRandomDilemmaFromWorld().clone(player);
                 // TODO: Create dilemma instance
                 return dilemma;
             default:
