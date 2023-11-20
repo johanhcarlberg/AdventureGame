@@ -144,7 +144,7 @@ public class Game {
                 break; 
             }
             else if (userInputChoiceInMenu == 3){
-                restCharacter();
+                restCharacter(player);
                 break; 
             }
             else {
@@ -175,8 +175,11 @@ public class Game {
         //Visa karaktärs egenskaper
     }
     
-    public void restCharacter() {
-        //Vila upp karaktären
+    public void restCharacter(Player player) {
+        player.restoreHealth();
+        System.out.println("You are now healthier than ever!");
+        System.out.println(" ");
+        
     }
 
     public void goIntoDilemma(){
@@ -203,5 +206,7 @@ public class Game {
         System.out.println("Exiting game..");
         System.exit(0);
     }
-    
+
 }
+
+
