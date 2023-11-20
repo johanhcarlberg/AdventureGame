@@ -176,5 +176,10 @@ public class Game {
 
         return selectedClass;
     }
+
+    public static void exitGame() {
+        System.out.println("Exiting game..");
+        System.exit(0);
+    }
     
 }
