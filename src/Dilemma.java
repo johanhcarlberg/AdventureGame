@@ -8,6 +8,7 @@ public class Dilemma implements Encounter{
     private String descriptionSameForEveryDilemma;
     private ArrayList<Answer> listOfChoices; //Variabel för att hålla en lista av typen Answers.
 
+    
     //Konstruktor för att skapa dilemman. Konstruktor tar emot en String description och en arrayList av answer. Den kan alltså ta emot obegränsat antal choices.
     public Dilemma(String description, ArrayList<Answer> choices, Player player) {
         this.description = description;
@@ -17,9 +18,14 @@ public class Dilemma implements Encounter{
         this.player = player;
     }
 
+    public Dilemma(String description, ArrayList<Answer> choices) {
+        this(description, choices, null);
+    }
+
     @Override
     public void startEncounter() {
         showDilemma();
+        resolveDilemma(Input.getIntegerInRange(1, listOfChoices.size()));
     }
 
     // Presentera dilemmat för spelaren
@@ -71,6 +77,10 @@ public class Dilemma implements Encounter{
                  player.takeDmg(1);
             }
         
+    }
+
+    public Dilemma clone(Player player) {
+        return new Dilemma(description, listOfChoices, player);
     }
 
     
