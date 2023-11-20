@@ -32,7 +32,7 @@ public class Dilemma implements Encounter{
         for (int i=0; i < listOfChoices.size(); i++) {
 
             Answer tillfalligAnswer = listOfChoices.get(i); // Hämtar Answer på vald index och lägger den till tillfalligAnswer
-            String tillfalligString = tillfalligAnswer.getText(); //Hämtar 
+            String tillfalligString = tillfalligAnswer.getText(); 
             
 
             System.out.println((i + 1) + ". " + tillfalligString); //Presenterar texten som sparats i tillfalligString tillsammans med index+1
@@ -50,13 +50,13 @@ public class Dilemma implements Encounter{
 
                 if(listOfChoices.get(choice -1).isCorrect()) { //minus 1 eftersom vi då får rätt index i listan.
 
-                    System.out.println("Bra val! Du överlever och får som belöning ett hälsopoäng.");
+                    System.out.println("Good choice! You survive and, as a reward, receive an experience point.");
                     System.out.println("");
                     System.out.println("-------------------------");
-                    //player1.increaseHealthScore();
+                    player.addExperience(1);
 
                 } else {
-                    System.out.println("Ditt val är fel och som en konsekvens tappar du ett hälsopoäng.");
+                    System.out.println("Your choice is wrong, and as a consequence, you lose one health point.");
                     System.out.println("");
                     System.out.println("-------------------------");
                     player.takeDmg(2);
@@ -64,10 +64,10 @@ public class Dilemma implements Encounter{
             
             
             } else {
-                System.out.println("Du har angivit ett felaktiskt alternativ och som straff för din slarvighet kommer du förlora ett hälsopoäng.");
+                System.out.println("You have selected an incorrect option, and as a penalty for your carelessness, you will lose one health point.");
                 System.out.println("");
                 System.out.println("-------------------------");
-                 //Player1.DecreaseHeathScore();
+                 player.takeDmg(1);
             }
         
     }
