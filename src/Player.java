@@ -42,9 +42,7 @@ public class Player extends Character {
     }
 
     public void increaseHealthScore (int healthPoints) {
-        System.out.println("Din hälsopoäng innan är" + getCurrentHealth());
         setCurrentHealth(getCurrentHealth() + healthPoints);
-        System.out.println("Din hälsopoäng efter:" + getCurrentHealth());
     }
 
   
