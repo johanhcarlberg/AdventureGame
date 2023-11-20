@@ -181,6 +181,12 @@ public class Game {
     }
     
     public void viewCharacterSheet() {
+        System.out.println("Name: " + player.getName());
+        System.out.println("Level: " + player.getLevel());
+        System.out.println("Max Health: " + player.getMaxHealth());
+        System.out.println("Current Health: " + player.getCurrentHealth());
+        System.out.println("Strength: " + player.getStrength());
+        System.out.println("Dexterity: " + player.getDexterity());
         //Visa karaktärs egenskaper
     }
     
