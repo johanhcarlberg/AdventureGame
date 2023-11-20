@@ -75,17 +75,17 @@ public class Game {
         EnemyTypes stoneGiantType = new EnemyTypes("Stone Giant", 12, 5, 3, 8);
         EnemyTypes dragonType = new EnemyTypes("Dragon", 15, 5, 5, 10);
 
-        wateWorld.getEnemies().add(seaHorseType.create(1));
-        wateWorld.getEnemies().add(sharkType.create(1));
-        wateWorld.getEnemies().add(anemoneType.create(1));
-        wateWorld.getEnemies().add(jellyfishType.create(1));
-        wateWorld.getEnemies().add(starfishType.create(1));
+        wateWorld.getEnemies().add(seaHorseType);
+        wateWorld.getEnemies().add(sharkType);
+        wateWorld.getEnemies().add(anemoneType);
+        wateWorld.getEnemies().add(jellyfishType);
+        wateWorld.getEnemies().add(starfishType);
 
-        volcanWorld.getEnemies().add(fireElementalType.create(1));
-        volcanWorld.getEnemies().add(lavaSnailType.create(1));
-        volcanWorld.getEnemies().add(salamanderType.create(1));
-        volcanWorld.getEnemies().add(stoneGiantType.create(1));
-        volcanWorld.getEnemies().add(dragonType.create(1));
+        volcanWorld.getEnemies().add(fireElementalType);
+        volcanWorld.getEnemies().add(lavaSnailType);
+        volcanWorld.getEnemies().add(salamanderType);
+        volcanWorld.getEnemies().add(stoneGiantType);
+        volcanWorld.getEnemies().add(dragonType);
         // Skapa alla fiendetyper
         // Skapa alla världar
         // Lägg till fienderna i rätt värld
