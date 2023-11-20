@@ -116,14 +116,23 @@ public class Game {
         dil4Choices.add(new Answer("Fäkta med armarna och skrik i hopp om att avvärja fågels attack", false));
         dil4Choices.add(new Answer("Stålsätt dig och invänta krock med fågeln.", false));
 
-        //En arraylist som tar emot Dilemma-objekt skapas och adds dilemmas. När dilemman skapas skickar man med dilemmats beskrivning och listan på dilemma-val.
-         ArrayList<Dilemma> dilemmas = new ArrayList<Dilemma>();
-         dilemmas.add(new Dilemma("Du vandrar längs en smal stig när en dånande ljudvåg skär genom luften. Marken börjar vibrera under dina fötter och fåglarna flyger panikslagna upp från träden. Plötsligt brakar en kaskad av stenar och jord nedför sluttningen, och du inser att du befinner dig mitt i ett fruktansvärt jordskred.", dil1Choices, player));
-         dilemmas.add(new Dilemma("Du ser ett mynt som ligger på marken.", dil2Choices, player));
-         dilemmas.add(new Dilemma("Du möter en mystisk man som frågar dig efter vägen till himlen. Vad svarar du?", dil3Choices, player));
-         dilemmas.add(new Dilemma("Plötsligt får du syn på en fågel som flyger rakt mot dig.", dil4Choices, player));
+        //Dilemman läggs till wateWorld. När dilemman skapas skickar man med dilemmats beskrivning och listan på dilemma-val. + spelaren
+         wateWorld.getDilemmas().add(new Dilemma("Du vandrar längs en smal stig när en dånande ljudvåg skär genom luften. " +
+         "Marken börjar vibrera under dina fötter och fåglarna flyger panikslagna upp från träden. " +
+         "Plötsligt brakar en kaskad av stenar och jord nedför sluttningen, och du inser att du befinner " +
+         " dig mitt i ett fruktansvärt jordskred.", dil1Choices, player));
+         wateWorld.getDilemmas().add(new Dilemma("Du vandrar längs en smal stig när en dånande ljudvåg skär genom luften. " +
+         "Marken börjar vibrera under dina fötter och fåglarna flyger panikslagna upp från träden. " +
+         "Plötsligt brakar en kaskad av stenar och jord nedför sluttningen, och du inser att du befinner " +
+         " dig mitt i ett fruktansvärt jordskred.", dil1Choices, player));
+         wateWorld.getDilemmas().add(new Dilemma("Du ser ett mynt som ligger på marken.", dil2Choices, player));
+
+         //Lägger till två dilemman till volcanWorld
+         volcanWorld.getDilemmas().add(new Dilemma("Du möter en mystisk man som frågar dig efter vägen till himlen. Vad svarar du?", dil3Choices, player));
+         volcanWorld.getDilemmas().add(new Dilemma("Plötsligt får du syn på en fågel som flyger rakt mot dig.", dil4Choices, player));
       
         currentWorld = wateWorld; // Spelaren börjar i vattenvärlden.
+
     }
     
         
@@ -199,6 +208,10 @@ public class Game {
         CharacterClass selectedClass = characterClasses[classSelection - 1];
 
         return selectedClass;
+    }
+
+    public World getWorld(){
+        return currentWorld;
     }
 
     public static void exitGame() {

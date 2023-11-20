@@ -25,10 +25,9 @@ public class Adventure {
                 return new Combat(player, enemy);
                 // TODO: Create combat instance
             case DILEMMA:
-                String dilemma = getRandomDilemmaFromWorld();
-                // TODO: Change from type String to type Dilemma once World has changed
+                Dilemma dilemma = getRandomDilemmaFromWorld();
                 // TODO: Create dilemma instance
-                return null;
+                return dilemma;
             default:
                 return null;
         }
@@ -43,11 +42,11 @@ public class Adventure {
         return enemy;
     }
 
-    private String getRandomDilemmaFromWorld() {
+    private Dilemma getRandomDilemmaFromWorld() {
         if(world.getDilemmas().size() == 0) {
             return null;
         }
-        String dilemma = world.getDilemmas().get(random.nextInt(world.getDilemmas().size()));
+        Dilemma dilemma = world.getDilemmas().get(random.nextInt(world.getDilemmas().size()));
         return dilemma;
     }
 
