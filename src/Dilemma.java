@@ -20,6 +20,7 @@ public class Dilemma implements Encounter{
     @Override
     public void startEncounter() {
         showDilemma();
+        resolveDilemma(Input.getIntegerInRange(1, listOfChoices.size()));
     }
 
     // Presentera dilemmat för spelaren
