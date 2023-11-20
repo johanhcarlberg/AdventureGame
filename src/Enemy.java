@@ -1,76 +1,28 @@
-import java.util.*;
 
-public class Enemy {
-    private String name;
-    private int level;
-    private int maxHealth;
-    private int currentHealth;
-    private int strength;
-    private int dexterity;
+public class Enemy extends Character {
     private int experience;
     
 
     public Enemy(String name, int level, int maxHealth, int strength, int dexterity, int experience){
-        this.name=name;
-        this.level = level;
-        this.maxHealth = this.level * maxHealth;
-        this.currentHealth = this.maxHealth;
-        this.strength = this.level * strength;
-        this.dexterity = this.level * dexterity;
-        this.experience = this.level * experience;
+        super(name, level, level * maxHealth, level * strength, level * dexterity);
+        this.experience = level * experience;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getHealth() {
-        return currentHealth;
-    }
-
-    public int getStrength() {
-        return strength;
-    }
-
-    public int getDexterity() {
-        return dexterity;
-    }
-
-     public int getLevel(){
-        return level;
-    }
-    
     public int getExperience(){
         return experience;
     }
 
     public void takeDmg (int damage) {
-        currentHealth -= damage;
+        setCurrentHealth(getCurrentHealth() - damage);
     }
 
     public void printStats(){
         System.out.println("Name: " + getName());
         System.out.println("Level: " + getLevel());
-        System.out.println("Health: " + getHealth());
+        System.out.println("Health: " + getCurrentHealth());
         System.out.println("Strength: " + getStrength());
         System.out.println("Dexterity: " + getDexterity());
         System.out.println("Gives xp: " + getExperience());
-    }
-    
-    private List<String> waterEnemies = new ArrayList<>(); {
-        waterEnemies.add("Seahorse");
-        waterEnemies.add("Shrimp");
-        waterEnemies.add("Shark");
-        waterEnemies.add("An Anemone");
-        waterEnemies.add("Jellyfish");
-    }
-
-    private List<String> fireEnemies = new ArrayList<>(); {
-        fireEnemies.add("Fire Elemental");
-        fireEnemies.add("Lava Snail");
-        fireEnemies.add("Salamander");
-        fireEnemies.add("Stone Giant");
-        fireEnemies.add("Smoker");
     }
         
     

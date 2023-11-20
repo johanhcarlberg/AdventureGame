@@ -1,6 +1,6 @@
 
 import java.util.*;
-public class Dilemma {
+public class Dilemma implements Encounter{
 
     private Player player;
 
@@ -14,6 +14,11 @@ public class Dilemma {
         descriptionSameForEveryDilemma = "Du befinner dig i ett knivigt dilemma och måste ta 1 av " + choices.size() + " val. Var extra noga med att mata in rätt alternativ. Det kan komma att straffa sig om du inte är noggrann...";
         this.listOfChoices = choices;
         this.player = player;
+    }
+
+    @Override
+    public void startEncounter() {
+        showDilemma();
     }
 
     // Presentera dilemmat för spelaren

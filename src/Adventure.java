@@ -38,7 +38,8 @@ public class Adventure {
         if(world.getEnemies().size() == 0) {
             return null;
         }
-        Enemy enemy = world.getEnemies().get(random.nextInt(world.getEnemies().size()));
+        EnemyTypes enemyType = world.getEnemies().get(random.nextInt(world.getEnemies().size()));
+        Enemy enemy = enemyType.create(player.getLevel());
         return enemy;
     }
 

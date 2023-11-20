@@ -1,60 +1,21 @@
-public class Player {
-    private String name;
-    private int level;
+public class Player extends Character {
     private int experience;
     private int nextLevelExperience;
-    private int maxHealth;
-    private int currentHealth;
     private CharacterClass playerClass;
-    private int strength;
-    private int dexterity;
 
     public Player(String name, CharacterClass playerClass) {
-        this.name = name;
-        this.level = 1;
+        super(name, 1, 10, playerClass.getInitialStrength(), playerClass.getInitialDexterity());
         this.experience = 0;
-        this.maxHealth = 10;
-        this.currentHealth = this.maxHealth;
         this.nextLevelExperience = calcNextLevelExperience();
         this.playerClass = playerClass;
-        this.strength = playerClass.getInitialStrength();
-        this.dexterity = playerClass.getInitialDexterity();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    private void setLevel(int level) {
-        this.level = level;
     }
 
     public int getExperience() {
         return experience;
     }
 
-    public int getCurrentHealth() {
-        return this.currentHealth;
-    }
-
-    private void setCurrentHealth(int newHealth) {
-        this.currentHealth = newHealth;
-    }
-
-    public int getMaxHealth() {
-        return this.maxHealth;
-    }
-
-    private void setMaxHealth(int newMaxHealth) {
-        this.maxHealth = newMaxHealth;
-    }
-
     public void restoreHealth() {
-        setCurrentHealth(this.maxHealth);
+        setCurrentHealth(getMaxHealth());
     }
 
     private void setExperience(int experience) {
@@ -63,22 +24,6 @@ public class Player {
 
     public CharacterClass getPlayerClass() {
         return this.playerClass;
-    }
-
-    public int getStrength() {
-        return this.strength;
-    }
-
-    private void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public int getDexterity() {
-        return this.dexterity;
-    }
-
-    private void setDexterity(int dexterity) {
-        this.dexterity = dexterity;
     }
 
     public int addExperience(int experienceToAdd) {
@@ -91,10 +36,17 @@ public class Player {
 
 
     public void takeDmg (int damage) {
-        System.out.println("Din hälsa innan dmg" + currentHealth);
-        currentHealth -= damage;
-        System.out.println("Din hälsa efter dmg:" + currentHealth);
+        System.out.println("Din hälsa innan dmg" + getCurrentHealth());
+        setCurrentHealth(getCurrentHealth() - damage);
+        System.out.println("Din hälsa efter dmg:" + getCurrentHealth());
     }
+
+    public void increaseHealthScore (int healthPoints) {
+        System.out.println("Din hälsopoäng innan är" + getCurrentHealth());
+        setCurrentHealth(getCurrentHealth() + healthPoints);
+        System.out.println("Din hälsopoäng efter:" + getCurrentHealth());
+    }
+
   
     public int getNextLevelExperience() {
         return this.nextLevelExperience;
@@ -105,7 +57,7 @@ public class Player {
     }
 
     public int calcNextLevelExperience() {
-        return (int) Math.floor(((this.level + 1) * 50) * 1.25);
+        return (int) Math.floor(((getLevel() + 1) * 50) * 1.25);
     }
 
     public boolean canLevelUp() {
@@ -113,12 +65,15 @@ public class Player {
     }
 
     private void levelUp() {
-        setLevel(this.level += 1);
+        setLevel(getLevel() + 1);
         setExperience(Math.max(0, experience - nextLevelExperience));
         setNextLevelExperience(calcNextLevelExperience());
 
-        setMaxHealth(maxHealth + 10);
+        setMaxHealth(getMaxHealth() + 10);
         restoreHealth();
+
+        setStrength(getStrength() + playerClass.getStrengthPerLevel());
+        setDexterity(getDexterity() + playerClass.getDexterityPerLevel());
         
         printLevelUpMessage();
 
@@ -128,7 +83,7 @@ public class Player {
     }
 
     private void printLevelUpMessage() {
-        System.out.println("You have gained a level! You are now level " + this.level + ".");
+        System.out.println("You have gained a level! You are now level " + getLevel() + ".");
     }
 
 }
