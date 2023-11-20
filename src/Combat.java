@@ -42,7 +42,7 @@ public class Combat implements Encounter {
             System.out.println("The "+enemy.getName()+" looks pretty weak. Don't get too cocky though");
         }
   
-        while(player.getCurrentHealth() > 0 && enemy.getHealth() > 0){
+        while(player.getCurrentHealth() > 0 && enemy.getCurrentHealth() > 0){
             attacks();
             compareAttacks(pAction, eAction);
         }
@@ -65,7 +65,7 @@ public class Combat implements Encounter {
 
         System.out.println("\n-----------------------------------------------------\n");
         System.out.println("Your health: " + player.getCurrentHealth() + ".");
-        System.out.println("Enemy health: " + enemy.getHealth() + ".\n");
+        System.out.println("Enemy health: " + enemy.getCurrentHealth() + ".\n");
 
         System.out.println("What would you like to do?");
         for (int i = 0; i < actionsList.size(); i++) { // Skriver ut lista med alternativ för strid
