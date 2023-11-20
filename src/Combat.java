@@ -172,6 +172,7 @@ public class Combat implements Encounter {
     void gameOver(){
         System.out.println("The enemy was too strong! This is where your story ends. How sad.");
         System.out.println("\n\n GAME OVER \n\n");
+        Game.exitGame();
     }
 
         // Ser om någon har gått ner till 0 hp
