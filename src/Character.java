@@ -6,7 +6,7 @@ public class Character {
     private int strength;
     private int dexterity;
 
-    public Character(String name, int level, int maxHealth, int currentHealth, int strength, int dexterity) {
+    public Character(String name, int level, int maxHealth, int strength, int dexterity) {
         this.name = name;
         this.level = level;
         this.maxHealth = maxHealth;
