@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
@@ -18,6 +19,20 @@ public class Input {
                 return inputInt;
             } catch(NumberFormatException e) {
                 System.out.println("Invalid number, try again.");
+            }
+        }
+    }
+
+    public static int getIntegerInRange(int lower, int upper) {
+        while(true) {
+            try {
+                int inputInt = getInteger();
+                if (inputInt < lower || inputInt > upper) {
+                    throw new InputMismatchException();
+                }
+                return inputInt;
+            } catch(InputMismatchException e) {
+                System.out.println("Number is not between " + lower + " and " + upper + ". Try again.");
             }
         }
     }
