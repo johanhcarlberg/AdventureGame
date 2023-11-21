@@ -37,6 +37,7 @@ public class Player extends Character {
 
     public void takeDmg (int damage) {
         setCurrentHealth(getCurrentHealth() - damage);
+        System.out.println("You took " + damage + " damage.");
     }
 
     public void increaseHealthScore (int healthPoints) {

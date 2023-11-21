@@ -14,6 +14,7 @@ public class Enemy extends Character {
 
     public void takeDmg (int damage) {
         setCurrentHealth(getCurrentHealth() - damage);
+        System.out.println("The enemy took " + damage + " damage.");
     }
 
     public void printStats(){
