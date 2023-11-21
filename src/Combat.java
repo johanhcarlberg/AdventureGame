@@ -30,8 +30,7 @@ public class Combat implements Encounter {
 
     void startCombat(){
         
-        System.out.println("\nYou encountered ");  // Ändra printen, ta bort full statprint
-        enemy.printStats();
+        System.out.println("\nYou encountered " + enemy.getName()+ "!");  // Ändra printen, ta bort full statprint
         if (player.getLevel() < enemy.getLevel()){      //Loop som kollar vilken nivå motståndaren är i relation till spelaren och ger en print beroende på detta
             System.out.println("The "+enemy.getName()+" looks really strong! Better be careful!");
         }
@@ -155,11 +154,21 @@ public class Combat implements Encounter {
     }
 
     void playerDmg(){
-        player.takeDmg(1);
+        if( enemy.getStrength() > enemy.getDexterity()){
+            player.takeDmg(random.nextInt(enemy.getStrength()));
+        }
+        else if(enemy.getStrength() < enemy.getDexterity()){
+            player.takeDmg(random.nextInt(enemy.getDexterity()));
+        }
     }
 
     void enemyDmg(){
-        enemy.takeDmg(1);
+        if(player.getPlayerClass().getName() == "Warrior"){
+            enemy.takeDmg(random.nextInt(player.getStrength()));
+        }
+        else if(player.getPlayerClass().getName() == "Rogue"){
+            enemy.takeDmg(random.nextInt(player.getDexterity()));
+        }
     }
 
     void winner(){
