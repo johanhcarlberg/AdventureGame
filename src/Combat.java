@@ -170,10 +170,10 @@ public class Combat implements Encounter {
 
     void playerDmg(){
         if( enemy.getStrength() > enemy.getDexterity()){
-            player.takeDmg(random.nextInt(enemy.getStrength()));
+            player.takeDmg(random.nextInt(enemy.getStrength())+1);
         }
         else if(enemy.getStrength() < enemy.getDexterity()){
-            player.takeDmg(random.nextInt(enemy.getDexterity()));
+            player.takeDmg(random.nextInt(enemy.getDexterity())+1);
         }
     }
 
