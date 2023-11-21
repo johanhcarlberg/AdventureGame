@@ -40,4 +40,13 @@ public class World {
     public void addCompletionRequirement(CompletionRequirement completionRequirement) {
         this.completionRequirements.add(completionRequirement);
     }
+
+    public boolean isCompleted() {
+        for(CompletionRequirement completionRequirement : completionRequirements) {
+            if (completionRequirement.verify() == false) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
