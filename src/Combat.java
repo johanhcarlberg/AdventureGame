@@ -19,18 +19,9 @@ public class Combat implements Encounter {
         startCombat();
     }
     
-    // public static void main(String[] args) {
-    //     CharacterClass.availableClasses.add(new CharacterClass("Warrior", 5, 3, 2, 2));
-    //     Player player = new Player("Dave!", CharacterClass.availableClasses.get(0));
-    //     Enemy enemy = new Enemy("Horse", 1,10,4,3,10);
-    //     Combat test = new Combat(player, enemy);
-    //     test.startCombat();
-    
-    // }
-
     void startCombat(){
         System.out.println("\n-----------------------------------------------------\n");
-        System.out.println("You encountered " + enemy.getName()+ "!");  // Ändra printen, ta bort full statprint
+        System.out.println("You encountered " + enemy.getName()+ "!");
         if (player.getLevel() < enemy.getLevel()){      //Loop som kollar vilken nivå motståndaren är i relation till spelaren och ger en print beroende på detta
             System.out.println("The "+enemy.getName()+" looks really strong! Better be careful!");
         }
@@ -56,7 +47,6 @@ public class Combat implements Encounter {
         else{
             gameOver();
         }
-
     }
 
     void attacks(){ 
@@ -86,7 +76,6 @@ public class Combat implements Encounter {
     }
 
     void compareAttacks(int p, int e) {
-        // if-else (?) som jämför pAction mot eAction
         if(p == 0 && e == 0){
             System.out.println("You fight eachother. It's a tough opponent! Luckily you didn't take any damage.");
             System.out.println();
@@ -145,7 +134,6 @@ public class Combat implements Encounter {
             else{
                 enemyDmg(); 
             }
-           
         }
 
         else if(p == 2 && e == 2){
@@ -187,8 +175,4 @@ public class Combat implements Encounter {
         System.out.println("\n\n GAME OVER \n\n");
         Game.exitGame();
     }
-
-        // Ser om någon har gått ner till 0 hp
-        // Avslutar combat (skriver ut xp gains och skickar spelaren vidare)
-
 }
