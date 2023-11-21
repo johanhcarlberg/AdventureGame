@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.util.ArrayList;
 
 enum GameState {
@@ -33,6 +32,7 @@ public class Game {
                 case ADVENTURE:
                     Encounter encounter = currentAdventure.getEncounter();
                     encounter.startEncounter();
+                    checkWorld();
                     currentGameState = GameState.INN;
                     break;
             }
@@ -224,6 +224,21 @@ public class Game {
     private void addWorldRequirements() {
         World waterWorld = World.availableWorlds.get(0);
         waterWorld.addCompletionRequirement(new LevelRequirement(2, player));
+        World volcanoWorld = World.availableWorlds.get(1);
+        volcanoWorld.addCompletionRequirement(new LevelRequirement(3, player));
+    }
+
+    private void checkWorld() {
+        if (currentWorld.isCompleted()) {
+            System.out.println("Congratulations! You have completed the " + currentWorld.getTheme().toLowerCase() + " world.");
+            int nextWorldIndex = World.availableWorlds.indexOf(currentWorld) + 1;
+            if (nextWorldIndex > World.availableWorlds.size() - 1) {
+                System.out.println("You have finished the game!");
+                Game.exitGame();
+            }
+            currentWorld = World.availableWorlds.get(nextWorldIndex);
+            System.out.println("You now have access to the " + currentWorld.getTheme().toLowerCase() + " world.");
+        }
     }
 
 }
