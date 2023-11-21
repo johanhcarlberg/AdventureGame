@@ -9,15 +9,10 @@ enum GameState {
 
 public class Game {
     public String playerName;
-    private Scanner sc;
     private Player player;
     private GameState currentGameState; // Styr vilken del av spelet spelaren är i.
     private Adventure currentAdventure;
     private World currentWorld;
-
-    public Game() {
-        this.sc = new Scanner(System.in);
-    }
 
     public void startGame() {
         setupGame();
@@ -29,6 +24,7 @@ public class Game {
             switch(currentGameState) {
                 case CREATE_CHARACTER:
                     createCharacter();
+                    addWorldRequirements();
                     currentGameState = GameState.INN;
                     break;
                 case INN:
@@ -223,6 +219,11 @@ public class Game {
     public static void exitGame() {
         System.out.println("Exiting game..");
         System.exit(0);
+    }
+
+    private void addWorldRequirements() {
+        World waterWorld = World.availableWorlds.get(0);
+        waterWorld.addCompletionRequirement(new LevelRequirement(2, player));
     }
 
 }
