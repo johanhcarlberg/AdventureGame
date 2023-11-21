@@ -49,34 +49,29 @@ public class Dilemma implements Encounter{
 
 
     //Metoden tar emot användarinput(choice).
-    public void resolveDilemma(int choice) {
-        
-    
-            //Kontrollerar först om choice är en giltig siffra - alltså mellan 1 och choices längd. Är den inte det kommer sista else att köras 
-            if(choice <= listOfChoices.size()) {
+    public void resolveDilemma(int choice) {    
+        if(listOfChoices.get(choice -1).isCorrect()) { //minus 1 eftersom vi då får rätt index i listan.
 
-                if(listOfChoices.get(choice -1).isCorrect()) { //minus 1 eftersom vi då får rätt index i listan.
+            System.out.println("Good choice! You survive and, as a reward, receive an experience point.");
+            System.out.println("");
+            System.out.println("-------------------------");
+            player.addExperience(1);
 
-                    System.out.println("Good choice! You survive and, as a reward, receive an experience point.");
-                    System.out.println("");
-                    System.out.println("-------------------------");
-                    player.addExperience(1);
-
-                } else {
-                    System.out.println("Your choice is wrong, and as a consequence, you lose one health point.");
-                    System.out.println("");
-                    System.out.println("-------------------------");
-                    player.takeDmg(2);
-                }
-            
-            
-            } else {
-                System.out.println("You have selected an incorrect option, and as a penalty for your carelessness, you will lose one health point.");
-                System.out.println("");
-                System.out.println("-------------------------");
-                 player.takeDmg(1);
+        } else {
+            System.out.println("Your choice is wrong, and as a consequence, you lose one health point.");
+            System.out.println("");
+            System.out.println("-------------------------");
+            player.takeDmg(2);
+            if (player.getCurrentHealth() <= 0) {
+                gameOver();
             }
-        
+        }
+    }
+
+    private void gameOver() {
+        System.out.println(player.getName() + " the " + player.getPlayerClass().getName() + " has been defeated.");
+        System.out.println("\n\n GAME OVER \n\n");
+        Game.exitGame();
     }
 
     public Dilemma clone(Player player) {
