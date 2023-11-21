@@ -96,7 +96,7 @@ public class Combat implements Encounter {
             System.out.println(enemy.getName() + " tries to fake you out. The " + enemy.getName() + " fails and take damage");
             System.out.println();
              if(player.getPlayerClass().getName() == "Warrior"){
-                System.out.println("Your great strenght makes you do more damage!");
+                System.out.println("Your great strength makes you do more damage!");
                 enemyDmg();
                 enemyDmg();
             }
@@ -179,10 +179,10 @@ public class Combat implements Encounter {
 
     void enemyDmg(){
         if(player.getPlayerClass().getName() == "Warrior"){
-            enemy.takeDmg(random.nextInt(player.getStrength()));
+            enemy.takeDmg(random.nextInt(player.getStrength())+1);
         }
         else if(player.getPlayerClass().getName() == "Rogue"){
-            enemy.takeDmg(random.nextInt(player.getDexterity()));
+            enemy.takeDmg(random.nextInt(player.getDexterity())+1);
         }
     }
 
