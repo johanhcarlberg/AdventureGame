@@ -32,7 +32,7 @@ public class Game {
                 case ADVENTURE:
                     Encounter encounter = currentAdventure.getEncounter();
                     encounter.startEncounter();
-                    checkWorld();
+                    checkWorldCompletion();
                     currentGameState = GameState.INN;
                     break;
             }
@@ -228,7 +228,7 @@ public class Game {
         volcanoWorld.addCompletionRequirement(new LevelRequirement(3, player));
     }
 
-    private void checkWorld() {
+    private void checkWorldCompletion() {
         if (currentWorld.isCompleted()) {
             System.out.println("Congratulations! You have completed the " + currentWorld.getTheme().toLowerCase() + " world.");
             int nextWorldIndex = World.availableWorlds.indexOf(currentWorld) + 1;
