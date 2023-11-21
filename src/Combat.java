@@ -19,18 +19,9 @@ public class Combat implements Encounter {
         startCombat();
     }
     
-    // public static void main(String[] args) {
-    //     CharacterClass.availableClasses.add(new CharacterClass("Warrior", 5, 3, 2, 2));
-    //     Player player = new Player("Dave!", CharacterClass.availableClasses.get(0));
-    //     Enemy enemy = new Enemy("Horse", 1,10,4,3,10);
-    //     Combat test = new Combat(player, enemy);
-    //     test.startCombat();
-    
-    // }
-
     void startCombat(){
-        
-        System.out.println("\nYou encountered " + enemy.getName()+ "!");  // Ändra printen, ta bort full statprint
+        System.out.println("\n-----------------------------------------------------\n");
+        System.out.println("You encountered " + enemy.getName()+ "!");
         if (player.getLevel() < enemy.getLevel()){      //Loop som kollar vilken nivå motståndaren är i relation till spelaren och ger en print beroende på detta
             System.out.println("The "+enemy.getName()+" looks really strong! Better be careful!");
         }
@@ -44,6 +35,8 @@ public class Combat implements Encounter {
         while(player.getCurrentHealth() > 0 && enemy.getCurrentHealth() > 0){
             attacks();
             if (pAction == 3) {
+                System.out.println("You ran away!");
+                System.out.println("\n-----------------------------------------------------\n");
                 return;
             }
             compareAttacks(pAction, eAction);
@@ -54,7 +47,6 @@ public class Combat implements Encounter {
         else{
             gameOver();
         }
-
     }
 
     void attacks(){ 
@@ -63,7 +55,7 @@ public class Combat implements Encounter {
         actionsList.add("Attack");
         actionsList.add("Counter");
         actionsList.add("Fake out");
-        actionsList.add("Try to run");
+        actionsList.add("Run away!");
 
         System.out.println("\n-----------------------------------------------------\n");
         System.out.println("Your health: " + player.getCurrentHealth() + ".");
@@ -77,13 +69,13 @@ public class Combat implements Encounter {
 
         //Random funktion för att välja motståndarens handling
         eAction = random.nextInt(3);
+        System.out.println("\n-----------------------------------------------------\n");
         System.out.println("You chose to " + actionsList.get(pAction) + ".");
         System.out.println(enemy.getName() + " chose to " + actionsList.get(eAction) + ".");
 
     }
 
     void compareAttacks(int p, int e) {
-        // if-else (?) som jämför pAction mot eAction
         if(p == 0 && e == 0){
             System.out.println("You fight eachother. It's a tough opponent! Luckily you didn't take any damage.");
             System.out.println();
@@ -142,33 +134,12 @@ public class Combat implements Encounter {
             else{
                 enemyDmg(); 
             }
-           
         }
 
         else if(p == 2 && e == 2){
             System.out.println("You both miss! What!? How!?");
             System.out.println();
         }
-
-        else if(p == 3 && e == 0){
-            System.out.println("You turn to run away but the " + enemy.getName() + " catches you. You take damage");
-            System.out.println();
-            playerDmg();
-        }
-
-        else if(p == 3 && e == 1){
-            System.out.println("You successfully run away");
-            System.out.println();
-            
-        }
-
-        else if(p == 3 && e == 2){
-            System.out.println("You try to run away. Its no use. The enemy is too fast!");
-            System.out.println();
-        }
-
-        // Skriva om Run funktionen
-
     }
 
     void playerDmg(){
@@ -190,19 +161,18 @@ public class Combat implements Encounter {
     }
 
     void winner(){
+        System.out.println("\n-----------------------------------------------------\n");
         System.out.println("\nCongratulations! You defeated " + enemy.getName() + "!");
         System.out.println("\nYou gained " + enemy.getExperience() + " points of experience! Yay!");
         player.addExperience(enemy.getExperience());
-        System.out.println("You now have " + player.getExperience() + " experience points! Much Wow! Such strong!\n");
+        System.out.println("You now have " + player.getExperience() + " experience points! Much Wow! Such strong!");
+        System.out.println("\n-----------------------------------------------------\n");
     }
     
     void gameOver(){
+        System.out.println("\n-----------------------------------------------------\n");
         System.out.println("The enemy was too strong! This is where your story ends. How sad.");
         System.out.println("\n\n GAME OVER \n\n");
         Game.exitGame();
     }
-
-        // Ser om någon har gått ner till 0 hp
-        // Avslutar combat (skriver ut xp gains och skickar spelaren vidare)
-
 }
