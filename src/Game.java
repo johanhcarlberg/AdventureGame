@@ -16,6 +16,7 @@ public class Game {
     public void startGame() {
         setupGame();
         System.out.println("Welcome to the Magic House!");
+        printInstructions();
         currentGameState = GameState.CREATE_CHARACTER; 
 
         //  Huvudloop för spelet. Kollar vilken del av spelet spelaren är i just nu och styr spelet efter det.
@@ -239,6 +240,11 @@ public class Game {
             currentWorld = World.availableWorlds.get(nextWorldIndex);
             System.out.println("You now have access to the " + currentWorld.getTheme().toLowerCase() + " world.");
         }
+    }
+
+    private void printInstructions() {
+        System.out.println("In numbered menus, enter the corresponding number for a selection to select that option.");
+        System.out.println("To exit the game at any point, write \"exit\"");
     }
 
 }
