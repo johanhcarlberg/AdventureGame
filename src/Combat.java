@@ -43,6 +43,9 @@ public class Combat implements Encounter {
   
         while(player.getCurrentHealth() > 0 && enemy.getCurrentHealth() > 0){
             attacks();
+            if (pAction == 3) {
+                return;
+            }
             compareAttacks(pAction, eAction);
         }
         if (player.getCurrentHealth() > 0){
