@@ -11,6 +11,7 @@ public class World {
         this.theme = theme;
         this.enemies = new ArrayList<>();
         this.dilemmas = new ArrayList<>();
+        this.completionRequirements = new ArrayList<>();
     }
 
      public String getTheme() {
@@ -42,6 +43,9 @@ public class World {
     }
 
     public boolean isCompleted() {
+        if (completionRequirements.size() == 0) {
+            return false;
+        }
         for(CompletionRequirement completionRequirement : completionRequirements) {
             if (completionRequirement.verify() == false) {
                 return false;
