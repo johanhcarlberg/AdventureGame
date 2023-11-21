@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.util.ArrayList;
 
 enum GameState {
@@ -9,15 +8,10 @@ enum GameState {
 
 public class Game {
     public String playerName;
-    private Scanner sc;
     private Player player;
     private GameState currentGameState; // Styr vilken del av spelet spelaren är i.
     private Adventure currentAdventure;
     private World currentWorld;
-
-    public Game() {
-        this.sc = new Scanner(System.in);
-    }
 
     public void startGame() {
         setupGame();
@@ -29,6 +23,7 @@ public class Game {
             switch(currentGameState) {
                 case CREATE_CHARACTER:
                     createCharacter();
+                    addWorldRequirements();
                     currentGameState = GameState.INN;
                     break;
                 case INN:
@@ -37,6 +32,7 @@ public class Game {
                 case ADVENTURE:
                     Encounter encounter = currentAdventure.getEncounter();
                     encounter.startEncounter();
+                    checkWorldCompletion();
                     currentGameState = GameState.INN;
                     break;
             }
@@ -223,6 +219,26 @@ public class Game {
     public static void exitGame() {
         System.out.println("Exiting game..");
         System.exit(0);
+    }
+
+    private void addWorldRequirements() {
+        World waterWorld = World.availableWorlds.get(0);
+        waterWorld.addCompletionRequirement(new LevelRequirement(2, player));
+        World volcanoWorld = World.availableWorlds.get(1);
+        volcanoWorld.addCompletionRequirement(new LevelRequirement(3, player));
+    }
+
+    private void checkWorldCompletion() {
+        if (currentWorld.isCompleted()) {
+            System.out.println("Congratulations! You have completed the " + currentWorld.getTheme().toLowerCase() + " world.");
+            int nextWorldIndex = World.availableWorlds.indexOf(currentWorld) + 1;
+            if (nextWorldIndex > World.availableWorlds.size() - 1) {
+                System.out.println("You have finished the game!");
+                Game.exitGame();
+            }
+            currentWorld = World.availableWorlds.get(nextWorldIndex);
+            System.out.println("You now have access to the " + currentWorld.getTheme().toLowerCase() + " world.");
+        }
     }
 
 }

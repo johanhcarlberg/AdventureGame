@@ -5,12 +5,13 @@ public class World {
     private List<EnemyTypes> enemies;
     private List<Dilemma> dilemmas;
     public static List<World> availableWorlds = new ArrayList<>();
-
+    private List<CompletionRequirement> completionRequirements;
 
     public World(String theme) {
         this.theme = theme;
         this.enemies = new ArrayList<>();
         this.dilemmas = new ArrayList<>();
+        this.completionRequirements = new ArrayList<>();
     }
 
      public String getTheme() {
@@ -35,5 +36,21 @@ public class World {
 
     public void setDilemmas(List<Dilemma> dilemmas) {
         this.dilemmas = dilemmas;
+    }
+
+    public void addCompletionRequirement(CompletionRequirement completionRequirement) {
+        this.completionRequirements.add(completionRequirement);
+    }
+
+    public boolean isCompleted() {
+        if (completionRequirements.size() == 0) {
+            return false;
+        }
+        for(CompletionRequirement completionRequirement : completionRequirements) {
+            if (completionRequirement.verify() == false) {
+                return false;
+            }
+        }
+        return true;
     }
 }
