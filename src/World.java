@@ -53,4 +53,11 @@ public class World {
         }
         return true;
     }
+
+    public void printRequirements() {
+        System.out.println("Completion requirements for " + getTheme().toLowerCase() + " world:");
+        for (CompletionRequirement completionRequirement : completionRequirements) {
+            System.out.println(completionRequirement);
+        }
+    }
 }
