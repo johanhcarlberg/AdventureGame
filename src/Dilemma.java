@@ -62,7 +62,16 @@ public class Dilemma implements Encounter{
             System.out.println("");
             System.out.println("-------------------------");
             player.takeDmg(2);
+            if (player.getCurrentHealth() <= 0) {
+                gameOver();
+            }
         }
+    }
+
+    private void gameOver() {
+        System.out.println(player.getName() + " the " + player.getPlayerClass().getName() + " has been defeated.");
+        System.out.println("\n\n GAME OVER \n\n");
+        Game.exitGame();
     }
 
     public Dilemma clone(Player player) {
