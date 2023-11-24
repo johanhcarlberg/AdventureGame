@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <enemyTypes>
+    <enemyType world="water">
+        <name>Test Enemy</name>
+        <maxHealth>100</maxHealth>
+        <strength>10</strength>
+        <dexterity>20</dexterity>
+        <experience>150</experience>
+    </enemyType>
+    <enemyType world="volcano">
+        <name>Test Enemy 2</name>
+        <maxHealth>20</maxHealth>
+        <strength>15</strength>
+        <dexterity>25</dexterity>
+        <experience>120</experience>
+    </enemyType>
+    <enemyType world="water">
+        <name>Test Enemy 3</name>
+        <maxHealth>20</maxHealth>
+        <strength>15</strength>
+        <dexterity>25</dexterity>
+        <experience>120</experience>
+    </enemyType>
+ </enemyTypes>

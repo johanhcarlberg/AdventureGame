@@ -1,5 +1,12 @@
-import java.util.List;
+import java.io.File;
 
-public interface XMLLoader<T> {
-    public List<T> load();
+public abstract class XMLLoader {
+    private File file;
+    public XMLLoader(File file) {
+        this.file = file;
+    }    
+
+    public File getFile() {
+        return file;
+    }
 }
