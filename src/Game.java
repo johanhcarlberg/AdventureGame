@@ -31,6 +31,8 @@ public class Game {
                     showMenuAlternativesLoop();
                     break;
                 case ADVENTURE:
+                    System.out.println("You go on an adventure in the " + currentWorld.getTheme().toLowerCase() + " world..");
+                    currentWorld.printRequirements();
                     Encounter encounter = currentAdventure.getEncounter();
                     encounter.startEncounter();
                     checkWorldCompletion();
