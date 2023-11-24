@@ -4,7 +4,7 @@ public class Player extends Character {
     private CharacterClass playerClass;
 
     public Player(String name, CharacterClass playerClass) {
-        super(name, 1, 10, playerClass.getInitialStrength(), playerClass.getInitialDexterity());
+        super(name, 1, 15, playerClass.getInitialStrength(), playerClass.getInitialDexterity());
         this.experience = 0;
         this.nextLevelExperience = calcNextLevelExperience();
         this.playerClass = playerClass;

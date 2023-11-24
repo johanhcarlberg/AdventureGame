@@ -22,7 +22,9 @@ public class Combat implements Encounter {
     void startCombat(){
         System.out.println("\n-----------------------------------------------------\n");
         System.out.println("You encountered " + enemy.getName()+ "!");
-        if (player.getLevel() < enemy.getLevel()){      //Loop som kollar vilken nivå motståndaren är i relation till spelaren och ger en print beroende på detta
+        
+        //Loop som kollar vilken nivå motståndaren är i relation till spelaren och ger en print beroende på detta
+        if (player.getLevel() < enemy.getLevel()){
             System.out.println("The "+enemy.getName()+" looks really strong! Better be careful!");
         }
         else if(player.getLevel() == enemy.getLevel()){
@@ -50,8 +52,9 @@ public class Combat implements Encounter {
     }
 
     void attacks(){ 
-       
-        List<String> actionsList = new ArrayList<>(); //Lista med alternativ för strid
+
+        //Lista med alternativ för strid
+        List<String> actionsList = new ArrayList<>(); 
         actionsList.add("Attack");
         actionsList.add("Counter");
         actionsList.add("Fake out");
@@ -60,9 +63,10 @@ public class Combat implements Encounter {
         System.out.println("\n-----------------------------------------------------\n");
         System.out.println("Your health: " + player.getCurrentHealth() + ".");
         System.out.println("Enemy health: " + enemy.getCurrentHealth() + ".\n");
-
         System.out.println("What would you like to do?");
-        for (int i = 0; i < actionsList.size(); i++) { // Skriver ut lista med alternativ för strid
+
+        // Skriver ut lista med alternativ för strid
+        for (int i = 0; i < actionsList.size(); i++) { 
             System.out.println(i+1 + ". " + actionsList.get(i));
         }
         pAction = actions.nextInt() - 1;
@@ -76,17 +80,18 @@ public class Combat implements Encounter {
     }
 
     void compareAttacks(int p, int e) {
+        //Attack & Attack
         if(p == 0 && e == 0){
             System.out.println("You fight eachother. It's a tough opponent! Luckily you didn't take any damage.");
             System.out.println();
         }
-
+        //Attack & Counter
         else if(p == 0 && e == 1){
             System.out.println(enemy.getName() + " counters you! You take damage.");
             System.out.println();
             playerDmg();
         }
-
+        //Attack & Fake out
         else if(p == 0 && e == 2){
             System.out.println(enemy.getName() + " tries to fake you out. The " + enemy.getName() + " fails and take damage");
             System.out.println();
@@ -99,30 +104,30 @@ public class Combat implements Encounter {
                 enemyDmg(); 
             }
         }
-
+        //Counter & Attack
         else if(p == 1 && e == 0){
             System.out.println("You counter the enemy attack. The enemy takes damage.");
             System.out.println();
             enemyDmg();
         }
-
+        //Counter & Counter
         else if(p == 1 && e == 1){
             System.out.println("You both stare at eachother intensely waiting for the other to move!");
             System.out.println();
         }
-
+        //Counter & Fake out
         else if(p == 1 && e == 2){
             System.out.println("You try to counter but the enemy fakes you out! You take damage!");
             System.out.println();
             playerDmg();
         }
-
+        //Fake out & Attack
         else if(p == 2 && e == 0){
             System.out.println("You try to fake out the enemy. It sees right through you. You take damage.");
             System.out.println();
             playerDmg();
         }
-
+        //Fake out & Counter
         else if(p == 2 && e == 1){
             System.out.println("The enemy tries to block but your attack slips through anyway! The enemy takes damage!");
             System.out.println();
@@ -135,7 +140,7 @@ public class Combat implements Encounter {
                 enemyDmg(); 
             }
         }
-
+        //Fake out & Fake out
         else if(p == 2 && e == 2){
             System.out.println("You both miss! What!? How!?");
             System.out.println();
