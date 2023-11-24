@@ -1,5 +1,5 @@
 
-public class Enemy extends Character {
+public class Enemy extends Character implements Damageable {
     private int experience;
     
 
@@ -12,7 +12,7 @@ public class Enemy extends Character {
         return experience;
     }
 
-    public void takeDmg (int damage) {
+    public void takeDamage (int damage) {
         setCurrentHealth(getCurrentHealth() - damage);
         System.out.println("The enemy took " + damage + " damage.");
     }
