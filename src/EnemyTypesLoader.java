@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,14 +23,20 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class EnemyTypesLoader implements XMLLoader<EnemyTypes> {
-    private File file;
+public class EnemyTypesLoader extends XMLLoader {
+    private Map<String,ArrayList<EnemyTypes>> enemyTypes;
     public EnemyTypesLoader(File file) {
-        this.file = file;
+        super(file);
+        enemyTypes = new HashMap<>();
     }
-    public List<EnemyTypes> load() {
+
+    public List<EnemyTypes> getEnemyTypesByWorld(String world) {
+        return enemyTypes.get(world);
+    }
+
+    public void load() {
         try {
-            FileInputStream fileIS = new FileInputStream(file);
+            FileInputStream fileIS = new FileInputStream(getFile());
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
             Document xmlDocument = builder.parse(fileIS);
@@ -38,21 +46,38 @@ public class EnemyTypesLoader implements XMLLoader<EnemyTypes> {
             System.out.println(nodeList.getLength());
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Element enemyType = (Element) nodeList.item(i);
+                String world = enemyType.getAttribute("world");
+                try {
                 String name = xPath.evaluate("./name/text()", enemyType);
-                double maxHealth = (double) xPath.evaluate("./maxHealth", enemyType, XPathConstants.NUMBER);
-                double strength = (double) xPath.evaluate("./strength", enemyType, XPathConstants.NUMBER);
-                double dexterity = (double) xPath.evaluate("./dexterity", enemyType, XPathConstants.NUMBER);
-                double experience = (double) xPath.evaluate("./dexterity", enemyType, XPathConstants.NUMBER);
-                System.out.println(name);
-                System.out.println(maxHealth);
-                System.out.println(strength);
-                System.out.println(dexterity);
-                System.out.println(experience);
+                if (name == null || name.isEmpty()) {
+                    throw new XPathExpressionException("Invalid enemy type name");
+                }
+                int maxHealth = Integer.parseInt(xPath.evaluate("./maxHealth", enemyType));
+                int strength = Integer.parseInt(xPath.evaluate("./strength", enemyType));
+                int dexterity = Integer.parseInt(xPath.evaluate("./dexterity", enemyType));
+                int experience = Integer.parseInt(xPath.evaluate("./dexterity", enemyType));
 
+                EnemyTypes et = new EnemyTypes(name, maxHealth, strength, dexterity, experience);
+                
+                ArrayList<EnemyTypes> etList = enemyTypes.get(world);
+                if (etList == null) {
+                    etList = new ArrayList<EnemyTypes>();
+                    enemyTypes.put(world, etList);
+                }
+                etList.add(et);
+                } catch(NumberFormatException e) {
+                    System.out.println("Couldn't add enemyType, invalid integer.");
+                    continue;
+                } catch(XPathExpressionException e) {
+                    System.out.println("Invalid xPath expression when adding enemyType: " + e.getMessage());
+                    continue;
+                } catch(Exception e) {
+                    System.out.println("Couldn't add enemyType: " + e.getMessage());
+                    continue;
+                }
             }
-            
         } catch(FileNotFoundException e) {
-            System.out.println("File " + file.getAbsolutePath() + " not found.");
+            System.out.println("File " + getFile().getAbsolutePath() + " not found.");
         } catch(ParserConfigurationException e) {
             e.printStackTrace();
         } catch(IOException e) {
@@ -62,8 +87,5 @@ public class EnemyTypesLoader implements XMLLoader<EnemyTypes> {
         } catch(XPathExpressionException e) {
             e.printStackTrace();
         }
-
-
-        return new ArrayList<EnemyTypes>();
     }
 }
