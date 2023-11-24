@@ -1,4 +1,8 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 enum GameState {
     CREATE_CHARACTER,
@@ -52,6 +56,15 @@ public class Game {
     }
 
     public void setupGame() {
+        try {
+            EnemyTypesLoader enemyTypesLoader = new EnemyTypesLoader(new File("src/resources/enemyTypes.xml").getCanonicalFile());
+            enemyTypesLoader.load();
+            List<EnemyTypes> waterEnemyTypes = enemyTypesLoader.getEnemyTypesByWorld("water");
+            List<EnemyTypes> volcanoEnemyTypes = enemyTypesLoader.getEnemyTypesByWorld("volcano");
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
         CharacterClass.availableClasses.add(new CharacterClass("Warrior", 5, 3, 2, 2));
         CharacterClass.availableClasses.add(new CharacterClass("Rogue", 3, 2, 5, 3));
 
