@@ -1,4 +1,4 @@
-public class Player extends Character {
+public class Player extends Character implements Damageable {
     private int experience;
     private int nextLevelExperience;
     private CharacterClass playerClass;
@@ -35,7 +35,7 @@ public class Player extends Character {
     }
 
 
-    public void takeDmg (int damage) {
+    public void takeDamage (int damage) {
         setCurrentHealth(getCurrentHealth() - damage);
         System.out.println("You took " + damage + " damage.");
     }

@@ -61,7 +61,7 @@ public class Dilemma implements Encounter{
             System.out.println("Your choice is wrong, and as a consequence, you lose one health point.");
             System.out.println("");
             System.out.println("-------------------------");
-            player.takeDmg(2);
+            player.takeDamage(2);
             if (player.getCurrentHealth() <= 0) {
                 gameOver();
             }
