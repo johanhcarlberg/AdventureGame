@@ -149,19 +149,19 @@ public class Combat implements Encounter {
 
     void playerDmg(){
         if( enemy.getStrength() > enemy.getDexterity()){
-            player.takeDmg(random.nextInt(enemy.getStrength())+1);
+            player.takeDamage(random.nextInt(enemy.getStrength())+1);
         }
         else if(enemy.getStrength() < enemy.getDexterity()){
-            player.takeDmg(random.nextInt(enemy.getDexterity())+1);
+            player.takeDamage(random.nextInt(enemy.getDexterity())+1);
         }
     }
 
     void enemyDmg(){
         if(player.getPlayerClass().getName() == "Warrior"){
-            enemy.takeDmg(random.nextInt(player.getStrength())+1);
+            enemy.takeDamage(random.nextInt(player.getStrength())+1);
         }
         else if(player.getPlayerClass().getName() == "Rogue"){
-            enemy.takeDmg(random.nextInt(player.getDexterity())+1);
+            enemy.takeDamage(random.nextInt(player.getDexterity())+1);
         }
     }
 
