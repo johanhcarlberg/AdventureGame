@@ -1,4 +1,4 @@
-public class Character {
+public abstract class Character {
     private String name;
     private int level;
     private int maxHealth;
