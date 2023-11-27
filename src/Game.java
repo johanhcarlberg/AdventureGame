@@ -1,38 +1,41 @@
 import java.util.ArrayList;
 
-enum GameState {
-    CREATE_CHARACTER,
-    INN,
-    ADVENTURE,
-}
-
 public class Game {
     public String playerName;
     private Player player;
     private GameState currentGameState; // Styr vilken del av spelet spelaren är i.
     private Adventure currentAdventure;
     private World currentWorld;
+    private Inn inn;
+
+    public enum GameState {
+    CREATE_CHARACTER,
+    INN,
+    ADVENTURE,
+}
 
     public void startGame() {
         setupGame();
         System.out.println("Welcome to the Magic House!");
         printInstructions();
-        currentGameState = GameState.CREATE_CHARACTER; 
+        currentGameState = GameState.CREATE_CHARACTER;
 
         //  Huvudloop för spelet. Kollar vilken del av spelet spelaren är i just nu och styr spelet efter det.
         while(true) {
             switch(currentGameState) {
                 case CREATE_CHARACTER:
                     createCharacter();
+                    inn = createInn();
                     addWorldRequirements();
                     currentGameState = GameState.INN;
                     break;
                 case INN:
-                    showMenuAlternativesLoop();
+                    currentGameState = inn.showMenuAlternatives();
                     break;
                 case ADVENTURE:
                     System.out.println("You go on an adventure in the " + currentWorld.getTheme().toLowerCase() + " world..");
                     currentWorld.printRequirements();
+                    currentAdventure = new Adventure(currentWorld, player);
                     Encounter encounter = currentAdventure.getEncounter();
                     encounter.startEncounter();
                     checkWorldCompletion();
@@ -133,73 +136,11 @@ public class Game {
         currentWorld = wateWorld; // Spelaren börjar i vattenvärlden.
 
     }
-    
-        
-    //Metod som visar VärdshusMenyn.
-    public void showMenuAlternativesLoop(){
-           
-         while (true){ //Loopen körs tills ett break kommer.
-            showInnAlternatives();
-            int userInputChoiceInMenu = Input.getIntegerInRange(1, 3);
-            System.out.println("You selected alternative number: " + userInputChoiceInMenu);
 
-            if (userInputChoiceInMenu == 1){
-                goOnAdventure();
-                break; //Avslutar loopen om ett giltigt val görs.
-            }
-            else if (userInputChoiceInMenu ==2){
-                viewCharacterSheet();
-                break; 
-            }
-            else if (userInputChoiceInMenu == 3){
-                restCharacter(player);
-                break; 
-            }
-            else {
-                System.out.println("You have entered an incorrect option. Try again. ");
-                    
-            }
-
-                
-        }
-    }
-    
-       
-
-    public void showInnAlternatives() {
-        System.out.println("You are now in the inn. Enter the number of your choice:");
-        System.out.println("1: Go on an adventure.");
-        System.out.println("2: Show your character sheet");
-        System.out.println("3: Rest and regain your health");
+    private Inn createInn() {
+        return new Inn(player, currentGameState);
     }
 
-    public void goOnAdventure() {
-        //Gå på äventyr
-        currentAdventure = new Adventure(currentWorld, player);
-        currentGameState = GameState.ADVENTURE;
-    }
-    
-    public void viewCharacterSheet() {
-        System.out.println(player.getName() + " the " + player.getPlayerClass().getName());
-        System.out.println("---------------------------------------");
-        System.out.println("Level: " + player.getLevel());
-        System.out.println("Experience: "+player.getExperience()+"/"+player.getNextLevelExperience());
-        System.out.println("Health: " + player.getCurrentHealth() + "/" + player.getMaxHealth());
-        System.out.println("Strength: " + player.getStrength());
-        System.out.println("Dexterity: " + player.getDexterity());
-    }
-    
-    public void restCharacter(Player player) {
-        player.restoreHealth();
-        System.out.println("You are now healthier than ever!");
-        System.out.println(" ");
-        
-    }
-
-    public void goIntoDilemma(){
-        //Nu har jag tappat bort mig och vet inte när denna ska användas.
-        
-    }
     public CharacterClass selectClass() {
         CharacterClass[] characterClasses = new CharacterClass[CharacterClass.availableClasses.size()];
         CharacterClass.availableClasses.toArray(characterClasses);
