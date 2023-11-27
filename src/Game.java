@@ -190,6 +190,13 @@ public class Game {
         System.out.println("To exit the game at any point, write \"exit\"");
     }
 
+    public static void gameOver(){ 
+        System.out.println("\n-----------------------------------------------------\n");
+        System.out.println("The enemy was too strong! This is where your story ends. How sad.");
+        System.out.println("\n\n GAME OVER \n\n");
+        Game.exitGame();
+    }
+
 }
 
 
