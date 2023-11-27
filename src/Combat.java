@@ -47,7 +47,7 @@ public class Combat implements Encounter {
             winner();
         }
         else{
-            gameOver();
+            Game.gameOver();
         }
     }
 
@@ -174,10 +174,5 @@ public class Combat implements Encounter {
         System.out.println("\n-----------------------------------------------------\n");
     }
     
-    void gameOver(){
-        System.out.println("\n-----------------------------------------------------\n");
-        System.out.println("The enemy was too strong! This is where your story ends. How sad.");
-        System.out.println("\n\n GAME OVER \n\n");
-        Game.exitGame();
-    }
+    
 }
