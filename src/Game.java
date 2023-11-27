@@ -8,12 +8,6 @@ public class Game {
     private World currentWorld;
     private Inn inn;
 
-    public enum GameState {
-    CREATE_CHARACTER,
-    INN,
-    ADVENTURE,
-}
-
     public void startGame() {
         setupGame();
         System.out.println("Welcome to the Magic House!");
