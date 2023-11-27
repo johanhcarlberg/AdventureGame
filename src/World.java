@@ -6,6 +6,7 @@ public class World {
     private List<Dilemma> dilemmas;
     public static List<World> availableWorlds = new ArrayList<>();
     private List<CompletionRequirement> completionRequirements;
+    private String description; 
 
     public World(String theme) {
         this.theme = theme;
@@ -59,5 +60,13 @@ public class World {
         for (CompletionRequirement completionRequirement : completionRequirements) {
             System.out.println(completionRequirement + " - Completed: " + (completionRequirement.verify() == true ? "Yes" : "No"));
         }
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

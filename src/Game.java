@@ -32,6 +32,9 @@ public class Game {
                     break;
                 case ADVENTURE:
                     System.out.println("You go on an adventure in the " + currentWorld.getTheme().toLowerCase() + " world..");
+                    System.out.println("---------------------------------------");
+                    System.out.println(currentWorld.getDescription());
+                    System.out.println("---------------------------------------");
                     currentWorld.printRequirements();
                     Encounter encounter = currentAdventure.getEncounter();
                     encounter.startEncounter();
@@ -61,6 +64,13 @@ public class Game {
         World.availableWorlds.add(new World("Volcano"));
         World wateWorld = World.availableWorlds.get(0);
         World volcanWorld = World.availableWorlds.get(1);
+        wateWorld.setDescription("As you descend into the crystal-clear waters of Aquatica, a breathtaking world unfolds around you. " + 
+        "The surroundings are a mesmerizing blend of vibrant colors, diverse ecosystems, and ancient ruins. " + 
+        "The ocean stretches in all directions, and the play of light creates a dynamic and ever-changing landscape.");
+        volcanWorld.setDescription("All around where you stand are hot springs that shoot out bubbles of lava, you see lava flowing down the mouintain sides. " +
+        "Due to the active volcano beneath you there is a haze of sulphur in the air. What lights up your surroundings are the lava flowing along the ground and the mountain. " +
+        "You can see a small passage between the lava"); 
+
         
         EnemyTypes seaHorseType = new EnemyTypes("Seahorse", 6, 2, 3, 7);
         EnemyTypes sharkType = new EnemyTypes("Shark", 10, 4, 3, 10);
@@ -121,7 +131,7 @@ public class Game {
          "Suddenly, a cascade of rocks and dirt crashes down the slope and you realize you are " +
          "in the middle of a terrible landslide.", dil1Choices));
          wateWorld.getDilemmas().add(new Dilemma("You are walking along a narrow path when a high pitched sound wave cuts through the air. " +
-         "The ground starts to vibrate beneath your feet and startled birds fly up from the trees. " + // är det menat att vara tvålikadana? 
+         "The ground starts to vibrate beneath your feet and startled birds fly up from the trees. " + 
          "Suddenly, a cascade of rocks and dirt crashes down the slope and you realize you are " +
          " in the middle of a terrible landslide.", dil1Choices));
          wateWorld.getDilemmas().add(new Dilemma("You see a coin on the ground", dil2Choices));
