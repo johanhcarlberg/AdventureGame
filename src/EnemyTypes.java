@@ -1,5 +1,3 @@
-  import java.util.*;
-
   public class EnemyTypes{
     private String enemyName;
     private int maxHealth;
