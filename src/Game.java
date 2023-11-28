@@ -3,34 +3,29 @@ import java.util.ArrayList;
 public class Game {
     public String playerName;
     private Player player;
-    private GameState currentGameState; // Styr vilken del av spelet spelaren är i.
+    private GameStateManager gameStateManager;
     private Adventure currentAdventure;
     private World currentWorld;
     private Inn inn;
 
-    public enum GameState {
-    CREATE_CHARACTER,
-    INN,
-    ADVENTURE,
-}
-
     public void startGame() {
+        gameStateManager = new GameStateManager();
         setupGame();
         System.out.println("Welcome to the Magic House!");
         printInstructions();
-        currentGameState = GameState.CREATE_CHARACTER;
+        gameStateManager.setCurrentGameState(GameState.CREATE_CHARACTER);
 
         //  Huvudloop för spelet. Kollar vilken del av spelet spelaren är i just nu och styr spelet efter det.
         while(true) {
-            switch(currentGameState) {
+            switch(gameStateManager.getCurrentGameState()) {
                 case CREATE_CHARACTER:
                     createCharacter();
                     inn = createInn();
                     addWorldRequirements();
-                    currentGameState = GameState.INN;
+                    gameStateManager.setCurrentGameState(GameState.INN);
                     break;
                 case INN:
-                    currentGameState = inn.showMenuAlternatives();
+                    inn.showMenuAlternatives();
                     break;
                 case ADVENTURE:
                     System.out.println("You go on an adventure in the " + currentWorld.getTheme().toLowerCase() + " world..");
@@ -39,7 +34,7 @@ public class Game {
                     Encounter encounter = currentAdventure.getEncounter();
                     encounter.startEncounter();
                     checkWorldCompletion();
-                    currentGameState = GameState.INN;
+                    gameStateManager.setCurrentGameState(GameState.INN);
                     break;
             }
         }
@@ -138,7 +133,7 @@ public class Game {
     }
 
     private Inn createInn() {
-        return new Inn(player, currentGameState);
+        return new Inn(player, gameStateManager);
     }
 
     public CharacterClass selectClass() {

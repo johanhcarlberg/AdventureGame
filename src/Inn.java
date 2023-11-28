@@ -2,21 +2,22 @@
 
 public class Inn {
     private Player player;
-    public Game.GameState currentGameState;
+    private GameStateManager gameStateManager;
     
 
-    public Inn (Player player, Game.GameState currentGameState) {
+    public Inn (Player player, GameStateManager gameStateManager) {
         this.player = player;
-        this.currentGameState = currentGameState;
+        this.gameStateManager = gameStateManager;
     }
 
-    public Game.GameState showMenuAlternatives(){
+    public void showMenuAlternatives(){
             showInnAlternatives();
            int userInputChoiceInMenu = Input.getIntegerInRange(1, 3);
            System.out.println("You selected alternative number: " + userInputChoiceInMenu);
 
            if (userInputChoiceInMenu == 1){
-               return Game.GameState.ADVENTURE;  
+               gameStateManager.setCurrentGameState(GameState.ADVENTURE);
+               return;
            }
 
            else if (userInputChoiceInMenu ==2){
@@ -27,7 +28,7 @@ public class Inn {
                restCharacter();   
            }  
             
-           return Game.GameState.INN;    
+           gameStateManager.setCurrentGameState(GameState.INN);
    }
 
    public void showInnAlternatives() {
