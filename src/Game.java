@@ -122,10 +122,6 @@ public class Game {
          "The ground starts to vibrate beneath your feet and startled birds fly up from the trees. " +
          "Suddenly, a cascade of rocks and dirt crashes down the slope and you realize you are " +
          "in the middle of a terrible landslide.", dil1Choices));
-         wateWorld.getDilemmas().add(new Dilemma("You are walking along a narrow path when a high pitched sound wave cuts through the air. " +
-         "The ground starts to vibrate beneath your feet and startled birds fly up from the trees. " + // är det menat att vara tvålikadana? 
-         "Suddenly, a cascade of rocks and dirt crashes down the slope and you realize you are " +
-         " in the middle of a terrible landslide.", dil1Choices));
          wateWorld.getDilemmas().add(new Dilemma("You see a coin on the ground", dil2Choices));
 
          wateWorld.getDilemmas().add(new Dilemma("You encounter a Nymph of the Lake. She asks you to solve a riddle for her.\n \"I flow without rest, a liquid dance, Quenching thirst with a subtle trance. In rivers wide or drops so small, I'm essential, embraced by all.\"\n \"What am I?\"", 
