@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Game {
     public String playerName;
@@ -126,6 +127,13 @@ public class Game {
          "Suddenly, a cascade of rocks and dirt crashes down the slope and you realize you are " +
          " in the middle of a terrible landslide.", dil1Choices));
          wateWorld.getDilemmas().add(new Dilemma("You see a coin on the ground", dil2Choices));
+
+         wateWorld.getDilemmas().add(new Dilemma("You encounter a Nymph of the Lake. She asks you to solve a riddle for her.\n \"I flow without rest, a liquid dance, Quenching thirst with a subtle trance. In rivers wide or drops so small, I'm essential, embraced by all.\"\n \"What am I?\"", 
+         new ArrayList<>(Arrays.asList(
+            new Answer("Water", true),
+            new Answer("Fire", false),
+            new Answer("Earth", false)
+            ))));
 
          //Lägger till två dilemman till volcanWorld
          volcanWorld.getDilemmas().add(new Dilemma("You meet a mysterious man who asks you the way to heaven. What do you answer? ", dil3Choices));
