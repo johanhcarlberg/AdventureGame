@@ -3,6 +3,7 @@
 public class Inn {
     private Player player;
     private GameStateManager gameStateManager;
+    private boolean firstVisit = true;
     
 
     public Inn (Player player, GameStateManager gameStateManager) {
@@ -32,7 +33,13 @@ public class Inn {
    }
 
    public void showInnAlternatives() {
-    System.out.println("You are now in the inn. Enter the number of your choice:");
+    if (firstVisit) {
+        System.out.println("You find the Wasted Wanderer, a lively inn situated close to the city gate. ");
+        firstVisit = false;
+    } else {
+        System.out.println("You return to the Wasted Wanderer.");
+    }
+    System.out.println("What would you like to do?");
     System.out.println("1: Go on an adventure.");
     System.out.println("2: Show your character sheet");
     System.out.println("3: Rest and regain your health");

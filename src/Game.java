@@ -11,7 +11,6 @@ public class Game {
     public void startGame() {
         gameStateManager = new GameStateManager();
         setupGame();
-        System.out.println("Welcome to the Magic House!");
         printInstructions();
         gameStateManager.setCurrentGameState(GameState.CREATE_CHARACTER);
 
@@ -41,14 +40,18 @@ public class Game {
     }
 
     private void createCharacter() {
-        System.out.println("What is your characters name? ");
+        System.out.println("As you walk up to the city gate, a guard approaches.");
+        System.out.println("\"So you want to be an adventurer, eh? What's your name?\"");
+        System.out.print("Character name: ");
         playerName = Input.getString();
 
         CharacterClass playerClass = selectClass();
 
         player = new Player(playerName, playerClass);
-
-        System.out.println("Hello " + player.getName() + " the " + player.getPlayerClass().getName() + "! Welcome to the game! ");
+        String characterIntroString = String.format("\'I'm %s, a %s! And I'm gonna be the greatest adventurer ever!\'", player.getName(), player.getPlayerClass().getName());
+        System.out.println(characterIntroString);
+        System.out.println("\"Well good luck then... I used to be an adventurer like you, until I took an arrow to the knee. Now I'm just a guard in this town.\""); 
+        System.out.println("\"Head on in. There is an inn called The Wasted Wanderer where you can find some tips on adventuring!\"\n");
     }
 
     public void setupGame() {
@@ -169,20 +172,23 @@ public class Game {
 
     private void checkWorldCompletion() {
         if (currentWorld.isCompleted()) {
-            System.out.println("Congratulations! You have completed the " + currentWorld.getTheme().toLowerCase() + " world.");
+            String worldCompletionText = "Well, well, well. Look at you! You have grown even stronger. You are ready for a new challenge!";
+            System.out.println(worldCompletionText);
             int nextWorldIndex = World.availableWorlds.indexOf(currentWorld) + 1;
             if (nextWorldIndex > World.availableWorlds.size() - 1) {
-                System.out.println("You have finished the game!");
+                String gameCompletionText = String.format("Congratulations %s! You have deafeated the strongest monsters of this world and grown into quite the legend among you peers! You are truly one of the greatest adventurers ever!", player.getName());
+                System.out.println(gameCompletionText);
                 Game.exitGame();
             }
             currentWorld = World.availableWorlds.get(nextWorldIndex);
-            System.out.println("You now have access to the " + currentWorld.getTheme().toLowerCase() + " world.");
+            String nextWorldText = String.format("You now have access to the %s world.", currentWorld.getTheme().toLowerCase());
+            System.out.println(nextWorldText);
         }
     }
 
     private void printInstructions() {
         System.out.println("In numbered menus, enter the corresponding number for a selection to select that option.");
-        System.out.println("To exit the game at any point, write \"exit\"");
+        System.out.println("To exit the game at any point, write \"exit\"\n");
     }
 
     public static void gameOver(){ 
