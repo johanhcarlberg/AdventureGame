@@ -34,7 +34,7 @@ public class Inn {
 
    public void showInnAlternatives() {
     if (firstVisit) {
-        System.out.println("You find the Wasted Wanderer, a lively inn situated close to the city gate. ");
+        printInnDescription();
         firstVisit = false;
     } else {
         System.out.println("You return to the Wasted Wanderer.");
@@ -61,6 +61,15 @@ public class Inn {
         System.out.println("You are now healthier than ever!");
         System.out.println(" ");
         
+    }
+
+    private void printInnDescription() {
+        System.out.println("You find the Wasted Wanderer, a lively inn situated close to the city gate. ");
+        System.out.println("As you step through the creaking wooden door, you are immediately greeted by the soothing scent of ancient books and the faint melody of distant lands.");
+        System.out.println("This inn is no ordinary resting place;  it is a hub of magical doorways, each leading to a different world waiting to be explored.\n");
+        
+        System.out.println("In the silence, a gentle hum signals the birth of a portal.");
+        System.out.println("A shimmering distortion, radiant with otherworldly hues, materializes before you.\n");
     }
    
 }
