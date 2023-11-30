@@ -95,7 +95,7 @@ public class Combat implements Encounter {
         else if(p == 0 && e == 2){
             System.out.println(enemy.getName() + " tries to fake you out. The " + enemy.getName() + " fails and take damage");
             System.out.println();
-             if(player.getPlayerClass().getName() == "Warrior"){
+             if(player.getPlayerClass().getName() == "Warrior" && Math.random() < 0.25){
                 System.out.println("Your great strength makes you do more damage!");
                 enemyDmg();
                 enemyDmg();
@@ -131,8 +131,8 @@ public class Combat implements Encounter {
         else if(p == 2 && e == 1){
             System.out.println("The enemy tries to block but your attack slips through anyway! The enemy takes damage!");
             System.out.println();
-            if(player.getPlayerClass().getName() == "Rogue"){
-                System.out.println("Your speed makes you do more damage!");
+            if(player.getPlayerClass().getName() == "Rogue" && Math.random() < 0.25){
+                System.out.println("Your speed makes you hit twice!");
                 enemyDmg();
                 enemyDmg();
             }
