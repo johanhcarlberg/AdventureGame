@@ -61,16 +61,16 @@ public class Game {
 
         
         EnemyTypes seaHorseType = new EnemyTypes("Seahorse", 6, 2, 3, 30);
-        EnemyTypes sharkType = new EnemyTypes("Shark", 10, 4, 3, 30);
-        EnemyTypes anemoneType = new EnemyTypes("Anemone", 2, 2, 1, 30);
+        EnemyTypes sharkType = new EnemyTypes("Shark", 10, 4, 3, 45);
+        EnemyTypes anemoneType = new EnemyTypes("Anemone", 2, 2, 1, 15);
         EnemyTypes jellyfishType = new EnemyTypes("Jellyfish", 6, 3, 2, 30);
-        EnemyTypes starfishType = new EnemyTypes("Starfish", 5, 2, 3, 30);
+        EnemyTypes starfishType = new EnemyTypes("Starfish", 5, 2, 3, 25);
         
-        EnemyTypes fireElementalType = new EnemyTypes("Fire Elemental", 7, 3, 2, 30);
-        EnemyTypes lavaSnailType = new EnemyTypes("Lava Snail", 4, 2, 1, 30);
+        EnemyTypes fireElementalType = new EnemyTypes("Fire Elemental", 7, 3, 2, 35);
+        EnemyTypes lavaSnailType = new EnemyTypes("Lava Snail", 4, 2, 1, 20);
         EnemyTypes salamanderType = new EnemyTypes("Salamander", 6, 2, 3, 30);
-        EnemyTypes stoneGiantType = new EnemyTypes("Stone Giant", 8, 4, 2, 30);
-        EnemyTypes dragonType = new EnemyTypes("Dragon", 10, 3, 4, 30);
+        EnemyTypes stoneGiantType = new EnemyTypes("Stone Giant", 8, 4, 2, 45);
+        EnemyTypes dragonType = new EnemyTypes("Dragon", 10, 3, 4, 50);
 
         wateWorld.getEnemies().add(seaHorseType);
         wateWorld.getEnemies().add(sharkType);
