@@ -62,7 +62,7 @@ public class Combat implements Encounter {
 
         System.out.println("\n-----------------------------------------------------\n");
         System.out.println("Your health: " + player.getCurrentHealth() + ".");
-        System.out.println("Enemy health: " + enemy.getCurrentHealth() + ".\n");
+        System.out.println(enemy.getName() + " health: " + enemy.getCurrentHealth() + ".\n");
         System.out.println("What would you like to do?");
 
         // Skriver ut lista med alternativ för strid
