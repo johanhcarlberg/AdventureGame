@@ -29,7 +29,7 @@ public class Game {
                     inn.showMenuAlternatives();
                     break;
                 case ADVENTURE:
-                    System.out.println("You go on an adventure in the " + currentWorld.getTheme().toLowerCase() + " world..");
+                    System.out.println("\nYou go on an adventure in the " + currentWorld.getTheme().toLowerCase() + " world..");
                     System.out.println("---------------------------------------");
                     System.out.println(currentWorld.getDescription());
                     System.out.println("---------------------------------------");

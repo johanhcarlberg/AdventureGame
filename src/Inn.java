@@ -37,15 +37,18 @@ public class Inn {
         printInnDescription();
         firstVisit = false;
     } else {
-        System.out.println("You return to the Wasted Wanderer.");
+        System.out.println("---------------------------------------");
+        System.out.println("\nYou return to the Wasted Wanderer.\n");
     }
     System.out.println("What would you like to do?");
     System.out.println("1: Go on an adventure.");
     System.out.println("2: Show your character sheet");
     System.out.println("3: Rest and regain your health");
+    System.out.println();
     }
 
     public void viewCharacterSheet() {
+        System.out.println();
         System.out.println(player.getName() + " the " + player.getPlayerClass().getName());
         System.out.println("---------------------------------------");
         System.out.println("Level: " + player.getLevel());
@@ -57,7 +60,7 @@ public class Inn {
 
     public void restCharacter() {
         player.restoreHealth();
-        System.out.println("Zzzzz.......");
+        System.out.println("\nZzzzz.......");
         System.out.println("You are now healthier than ever!");
         System.out.println(" ");
         
