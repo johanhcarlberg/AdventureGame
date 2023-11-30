@@ -12,8 +12,7 @@ public class Dilemma implements Encounter{
     //Konstruktor för att skapa dilemman. Konstruktor tar emot en String description och en arrayList av answer. Den kan alltså ta emot obegränsat antal choices.
     public Dilemma(String description, ArrayList<Answer> choices, Player player) {
         this.description = description;
-        descriptionSameForEveryDilemma = "Du befinner dig i ett knivigt dilemma och måste ta 1 av " + choices.size() +
-        " val. Var extra noga med att mata in rätt alternativ. Det kan komma att straffa sig om du inte är noggrann...";
+        descriptionSameForEveryDilemma = "You find yourself in a tricky dilemma and must make 1 out of " + choices.size() + " choices. Be extra careful to enter the correct option. It may come back to haunt you if you're not careful...";
         this.listOfChoices = choices;
         this.player = player;
     }
