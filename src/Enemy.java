@@ -1,5 +1,5 @@
 
-public class Enemy extends Character implements Damageable {
+public class Enemy extends GameCharacter implements Damageable {
     private int experience;
     
 
