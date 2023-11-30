@@ -1,10 +1,10 @@
-public class Player extends Character {
+public class Player extends Character implements Damageable {
     private int experience;
     private int nextLevelExperience;
     private CharacterClass playerClass;
 
     public Player(String name, CharacterClass playerClass) {
-        super(name, 1, 10, playerClass.getInitialStrength(), playerClass.getInitialDexterity());
+        super(name, 1, 15, playerClass.getInitialStrength(), playerClass.getInitialDexterity());
         this.experience = 0;
         this.nextLevelExperience = calcNextLevelExperience();
         this.playerClass = playerClass;
@@ -35,7 +35,7 @@ public class Player extends Character {
     }
 
 
-    public void takeDmg (int damage) {
+    public void takeDamage (int damage) {
         setCurrentHealth(getCurrentHealth() - damage);
         System.out.println("You took " + damage + " damage.");
     }
