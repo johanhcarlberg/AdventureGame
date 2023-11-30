@@ -13,7 +13,7 @@ public class Dilemma implements Encounter{
     //Konstruktorn tar emot en beskrivning av dilemmat, en arrayList av answer, och en Spelare.
     public Dilemma(String description, ArrayList<Answer> choices, Player player) {
         this.description = description;
-        descriptionSameForEveryDilemma ="You find yourself in a tricky dilemma and must make 1 out of " + choices.size() + " choices. Be extra careful to enter the correct option. It may come back to haunt you if you're not careful...";
+        descriptionSameForEveryDilemma = "You find yourself in a tricky dilemma and must make 1 out of " + choices.size() + " choices. Be extra careful to enter the correct option. It may come back to haunt you if you're not careful...";
         this.listOfChoices = choices;
         this.player = player;
     }

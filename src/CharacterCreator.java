@@ -1,5 +1,3 @@
-import java.lang.Character;
-
 public class CharacterCreator {
     private final int NAME_MAX_LENGTH = 15;
 
