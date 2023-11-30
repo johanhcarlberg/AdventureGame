@@ -1,4 +1,4 @@
-public abstract class Character {
+public abstract class GameCharacter {
     private String name;
     private int level;
     private int maxHealth;
@@ -6,7 +6,7 @@ public abstract class Character {
     private int strength;
     private int dexterity;
 
-    public Character(String name, int level, int maxHealth, int strength, int dexterity) {
+    public GameCharacter(String name, int level, int maxHealth, int strength, int dexterity) {
         this.name = name;
         this.level = level;
         this.maxHealth = maxHealth;

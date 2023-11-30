@@ -1,4 +1,4 @@
-public class Player extends Character implements Damageable {
+public class Player extends GameCharacter implements Damageable {
     private int experience;
     private int nextLevelExperience;
     private CharacterClass playerClass;
