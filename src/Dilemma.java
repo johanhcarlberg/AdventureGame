@@ -8,7 +8,7 @@ public class Dilemma implements Encounter{
     private String descriptionSameForEveryDilemma;
     private ArrayList<Answer> listOfChoices;
     private int damageWhenLoosingDilemma = 2;
-    private int gainExperiencePoint = 1;
+    private int gainExperiencePoint = 15;
 
     //Konstruktorn tar emot en beskrivning av dilemmat, en arrayList av answer, och en Spelare.
     public Dilemma(String description, ArrayList<Answer> choices, Player player) {
@@ -70,14 +70,14 @@ public class Dilemma implements Encounter{
         }
     }
 
-    //Egen game-over metod. Ta bort denna och använda den statiska från Game-klassen istället?
+    //Egen game-over metod
     private void gameOver() {
         System.out.println(player.getName() + " the " + player.getPlayerClass().getName() + " has been defeated.");
         System.out.println("\n\n GAME OVER \n\n");
         Game.exitGame();
     }
 
-    //Här anropas orginalkonstruktorn (när vi har ett player-objekt att skicka med)
+    //Anropar orginalkonstruktorn
     public Dilemma clone(Player player) {
         return new Dilemma(description, listOfChoices, player);
     }
