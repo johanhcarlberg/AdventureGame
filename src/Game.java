@@ -44,21 +44,24 @@ public class Game {
         }
     }
 
+    private void loadWorlds() {
+        String waterWorldDescription = "As you descend into the crystal-clear waters of Aquatica, a breathtaking world unfolds around you. " + 
+        "The surroundings are a mesmerizing blend of vibrant colors, diverse ecosystems, and ancient ruins. " + 
+        "The ocean stretches in all directions, and the play of light creates a dynamic and ever-changing landscape.";
+        World.availableWorlds.add(new World("Water", waterWorldDescription));
+        String volcanoWorldDescription = "All around where you stand are hot springs that shoot out bubbles of lava, you see lava flowing down the mouintain sides. " +
+        "Due to the active volcano beneath you there is a haze of sulphur in the air. What lights up your surroundings are the lava flowing along the ground and the mountain. " +
+        "You can see a small passage between the lava"; 
+        World.availableWorlds.add(new World("Volcano", volcanoWorldDescription));
+    }
+
     public void setupGame() {
         CharacterClass.availableClasses.add(new CharacterClass("Warrior", 5, 3, 2, 2));
         CharacterClass.availableClasses.add(new CharacterClass("Rogue", 3, 2, 5, 3));
 
-        World.availableWorlds.add(new World("Water"));
-        World.availableWorlds.add(new World("Volcano"));
-        World wateWorld = World.availableWorlds.get(0);
-        World volcanWorld = World.availableWorlds.get(1);
-        wateWorld.setDescription("As you descend into the crystal-clear waters of Aquatica, a breathtaking world unfolds around you. " + 
-        "The surroundings are a mesmerizing blend of vibrant colors, diverse ecosystems, and ancient ruins. " + 
-        "The ocean stretches in all directions, and the play of light creates a dynamic and ever-changing landscape.");
-        volcanWorld.setDescription("All around where you stand are hot springs that shoot out bubbles of lava, you see lava flowing down the mouintain sides. " +
-        "Due to the active volcano beneath you there is a haze of sulphur in the air. What lights up your surroundings are the lava flowing along the ground and the mountain. " +
-        "You can see a small passage between the lava"); 
-
+        loadWorlds();
+        World waterWorld = World.availableWorlds.get(0);
+        World volcanoWorld = World.availableWorlds.get(1);
         
         EnemyTypes seaHorseType = new EnemyTypes("Seahorse", 6, 2, 3, 30);
         EnemyTypes sharkType = new EnemyTypes("Shark", 10, 4, 3, 45);
@@ -72,17 +75,17 @@ public class Game {
         EnemyTypes stoneGiantType = new EnemyTypes("Stone Giant", 8, 4, 2, 45);
         EnemyTypes dragonType = new EnemyTypes("Dragon", 10, 3, 4, 50);
 
-        wateWorld.getEnemies().add(seaHorseType);
-        wateWorld.getEnemies().add(sharkType);
-        wateWorld.getEnemies().add(anemoneType);
-        wateWorld.getEnemies().add(jellyfishType);
-        wateWorld.getEnemies().add(starfishType);
+        waterWorld.getEnemies().add(seaHorseType);
+        waterWorld.getEnemies().add(sharkType);
+        waterWorld.getEnemies().add(anemoneType);
+        waterWorld.getEnemies().add(jellyfishType);
+        waterWorld.getEnemies().add(starfishType);
 
-        volcanWorld.getEnemies().add(fireElementalType);
-        volcanWorld.getEnemies().add(lavaSnailType);
-        volcanWorld.getEnemies().add(salamanderType);
-        volcanWorld.getEnemies().add(stoneGiantType);
-        volcanWorld.getEnemies().add(dragonType);
+        volcanoWorld.getEnemies().add(fireElementalType);
+        volcanoWorld.getEnemies().add(lavaSnailType);
+        volcanoWorld.getEnemies().add(salamanderType);
+        volcanoWorld.getEnemies().add(stoneGiantType);
+        volcanoWorld.getEnemies().add(dragonType);
         // Skapa alla fiendetyper
         // Skapa alla världar
         // Lägg till fienderna i rätt värld
@@ -114,13 +117,13 @@ public class Game {
         dil4Choices.add(new Answer("Brace yourself and wait for the collision with the bird!.", false));
 
         //Dilemman läggs till wateWorld. När dilemman skapas skickar man med dilemmats beskrivning och listan på dilemma-val. + spelaren
-         wateWorld.getDilemmas().add(new Dilemma("You are walking along a narrow path when a high pitched sound wave cuts through the air. " +
+         waterWorld.getDilemmas().add(new Dilemma("You are walking along a narrow path when a high pitched sound wave cuts through the air. " +
          "The ground starts to vibrate beneath your feet and startled birds fly up from the trees. " +
          "Suddenly, a cascade of rocks and dirt crashes down the slope and you realize you are " +
          "in the middle of a terrible landslide.", dil1Choices));
-         wateWorld.getDilemmas().add(new Dilemma("You see a coin on the ground", dil2Choices));
+         waterWorld.getDilemmas().add(new Dilemma("You see a coin on the ground", dil2Choices));
 
-         wateWorld.getDilemmas().add(new Dilemma("You encounter a Nymph of the Lake. She asks you to solve a riddle for her.\n \"I flow without rest, a liquid dance, Quenching thirst with a subtle trance. In rivers wide or drops so small, I'm essential, embraced by all.\"\n \"What am I?\"", 
+         waterWorld.getDilemmas().add(new Dilemma("You encounter a Nymph of the Lake. She asks you to solve a riddle for her.\n \"I flow without rest, a liquid dance, Quenching thirst with a subtle trance. In rivers wide or drops so small, I'm essential, embraced by all.\"\n \"What am I?\"", 
          new ArrayList<>(Arrays.asList(
             new Answer("Water", true),
             new Answer("Fire", false),
@@ -128,10 +131,10 @@ public class Game {
             ))));
 
          //Lägger till två dilemman till volcanWorld
-         volcanWorld.getDilemmas().add(new Dilemma("You meet a mysterious man who asks you the way to heaven. What do you answer? ", dil3Choices));
-         volcanWorld.getDilemmas().add(new Dilemma("Suddenly you see a bird flying straight towards you. What do you do? ", dil4Choices));
+         volcanoWorld.getDilemmas().add(new Dilemma("You meet a mysterious man who asks you the way to heaven. What do you answer? ", dil3Choices));
+         volcanoWorld.getDilemmas().add(new Dilemma("Suddenly you see a bird flying straight towards you. What do you do? ", dil4Choices));
       
-        currentWorld = wateWorld; // Spelaren börjar i vattenvärlden.
+        currentWorld = waterWorld; // Spelaren börjar i vattenvärlden.
 
     }
 
