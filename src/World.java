@@ -2,7 +2,7 @@ import java.util.*;
 
 public class World {
     private String theme;
-    private List<EnemyTypes> enemies;
+    private List<EnemyType> enemies;
     private List<Dilemma> dilemmas;
     public static List<World> availableWorlds = new ArrayList<>();
     private List<CompletionRequirement> completionRequirements;
@@ -31,11 +31,11 @@ public class World {
         this.theme = theme;
     }
 
-    public List<EnemyTypes> getEnemies() {
+    public List<EnemyType> getEnemies() {
         return enemies;
     }
 
-    public void setEnemies(List<EnemyTypes> enemies) {
+    public void setEnemies(List<EnemyType> enemies) {
         this.enemies = enemies;
     }
 

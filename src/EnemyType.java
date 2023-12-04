@@ -1,4 +1,4 @@
-  public class EnemyTypes{
+  public class EnemyType{
     private String enemyName;
     private int maxHealth;
     private int strength;
@@ -6,7 +6,7 @@
     private int experience;
   
 
-    public EnemyTypes(String name, int maxHealth, int strength, int dexterity, int experience){
+    public EnemyType(String name, int maxHealth, int strength, int dexterity, int experience){
         this.enemyName = name;
         this.maxHealth = maxHealth;
         this.strength = strength;
