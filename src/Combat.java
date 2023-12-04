@@ -8,8 +8,7 @@ public class Combat implements Encounter {
     private int pAction;
     private int eAction;
     private Random random = new Random();
-    private Scanner actions = new Scanner(System.in);
-
+    
     public Combat(Player player, Enemy enemy){
         this.player = player;
         this.enemy = enemy;
@@ -37,8 +36,7 @@ public class Combat implements Encounter {
         while(player.getCurrentHealth() > 0 && enemy.getCurrentHealth() > 0){
             attacks();
             if (pAction == 3) {
-                System.out.println("You ran away!");
-                System.out.println("\n-----------------------------------------------------\n");
+                System.out.println("You ran away!\n");
                 return;
             }
             compareAttacks(pAction, eAction);
@@ -69,8 +67,8 @@ public class Combat implements Encounter {
         for (int i = 0; i < actionsList.size(); i++) { 
             System.out.println(i+1 + ". " + actionsList.get(i));
         }
-        pAction = actions.nextInt() - 1;
-
+        pAction = Input.getIntegerInRange(1,actionsList.size())-1;
+       
         //Random funktion för att välja motståndarens handling
         eAction = random.nextInt(3);
         System.out.println("\n-----------------------------------------------------\n");
@@ -171,7 +169,6 @@ public class Combat implements Encounter {
         System.out.println("\nYou gained " + enemy.getExperience() + " points of experience! Yay!");
         player.addExperience(enemy.getExperience());
         System.out.println("You now have " + player.getExperience() + " experience points! Much Wow! Such strong!");
-        System.out.println("\n-----------------------------------------------------\n");
     }
     
     
