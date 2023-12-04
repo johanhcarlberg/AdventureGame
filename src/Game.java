@@ -133,10 +133,13 @@ public class Game {
          volcanoWorld.getDilemmas().add(new Dilemma("Suddenly you see a bird flying straight towards you. What do you do? ", dil4Choices));
     }
 
-    public void setupGame() {
+    private void loadCharacterClasses() {
         CharacterClass.availableClasses.add(new CharacterClass("Warrior", 5, 3, 2, 2));
         CharacterClass.availableClasses.add(new CharacterClass("Rogue", 3, 2, 5, 3));
+    }
 
+    public void setupGame() {
+        loadCharacterClasses();
         loadWorlds();
         loadEnemyTypes();
         loadDilemmas();        
