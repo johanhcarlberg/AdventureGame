@@ -54,13 +54,13 @@ public class Dilemma implements Encounter{
         //Kontrollerar om valt svarsalternativ har en boolean som är true. (minus 1 eftersom vi då får rätt index i listan.)
         if(listOfChoices.get(choice -1).isCorrect()) { 
 
-            System.out.println("Good choice! You survive and, as a reward, receive an experience point.");
+            System.out.println("Good choice! You survive and, as a reward, receive"+ gainExperiencePoint + " experience points.");
             System.out.println("");
             System.out.println("-------------------------");
             player.addExperience(gainExperiencePoint);
 
         } else {
-            System.out.println("Your choice is wrong, and as a consequence, you lose " + damageWhenLoosingDilemma + "health point.");
+            System.out.println("Your choice is wrong, and as a consequence, you lose " + damageWhenLoosingDilemma + "health points.");
             System.out.println("");
             System.out.println("-------------------------");
             player.takeDamage(damageWhenLoosingDilemma);
