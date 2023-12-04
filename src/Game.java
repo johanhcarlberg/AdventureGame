@@ -55,11 +55,7 @@ public class Game {
         World.availableWorlds.add(new World("Volcano", volcanoWorldDescription));
     }
 
-    public void setupGame() {
-        CharacterClass.availableClasses.add(new CharacterClass("Warrior", 5, 3, 2, 2));
-        CharacterClass.availableClasses.add(new CharacterClass("Rogue", 3, 2, 5, 3));
-
-        loadWorlds();
+    private void loadEnemyTypes() {
         World waterWorld = World.availableWorlds.get(0);
         World volcanoWorld = World.availableWorlds.get(1);
         
@@ -86,6 +82,16 @@ public class Game {
         volcanoWorld.getEnemies().add(salamanderType);
         volcanoWorld.getEnemies().add(stoneGiantType);
         volcanoWorld.getEnemies().add(dragonType);
+    }
+
+    public void setupGame() {
+        CharacterClass.availableClasses.add(new CharacterClass("Warrior", 5, 3, 2, 2));
+        CharacterClass.availableClasses.add(new CharacterClass("Rogue", 3, 2, 5, 3));
+
+        loadWorlds();
+        World waterWorld = World.availableWorlds.get(0);
+        World volcanoWorld = World.availableWorlds.get(1);
+        loadEnemyTypes();
         // Skapa alla fiendetyper
         // Skapa alla världar
         // Lägg till fienderna i rätt värld
