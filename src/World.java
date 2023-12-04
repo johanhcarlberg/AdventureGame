@@ -8,6 +8,14 @@ public class World {
     private List<CompletionRequirement> completionRequirements;
     private String description; 
 
+    public World(String theme, String description) {
+        this.theme = theme;
+        this.enemies = new ArrayList<>();
+        this.dilemmas = new ArrayList<>();
+        this.completionRequirements = new ArrayList<>();
+        this.description = description;
+    }
+
     public World(String theme) {
         this.theme = theme;
         this.enemies = new ArrayList<>();
