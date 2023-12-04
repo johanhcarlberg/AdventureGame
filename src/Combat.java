@@ -168,7 +168,7 @@ public class Combat implements Encounter {
         System.out.println("\nCongratulations! You defeated " + enemy.getName() + "!");
         System.out.println("\nYou gained " + enemy.getExperience() + " points of experience! Yay!");
         player.addExperience(enemy.getExperience());
-        System.out.println("You now have " + player.getExperience() + " experience points! Much Wow! Such strong!");
+        System.out.println("You now have " + player.getExperience() + " experience points! Much Wow! Such strong!\n");
     }
     
     
