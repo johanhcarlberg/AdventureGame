@@ -2,11 +2,11 @@
 //Observera att klassen endast hanterar svar. Ett dilemma har flera Answer-objekt.
 public class Answer {
     private boolean isCorrect;
-    private String textAnswerPption;
+    private String textAnswerOption;
 
     public Answer(String text, boolean isCorrect) {
         this.isCorrect = isCorrect;
-        this.textAnswerPption = text;
+        this.textAnswerOption = text;
     }
 
     public boolean isCorrect() {
@@ -14,6 +14,6 @@ public class Answer {
     }
 
     public String getText() {
-        return this.textAnswerPption;
+        return this.textAnswerOption;
     }
 }
