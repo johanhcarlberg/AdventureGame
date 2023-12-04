@@ -69,7 +69,8 @@ public class Combat implements Encounter {
         for (int i = 0; i < actionsList.size(); i++) { 
             System.out.println(i+1 + ". " + actionsList.get(i));
         }
-        pAction = actions.nextInt() - 1;
+        pAction = Input.getIntegerInRange(1,actionsList.size());
+       // pAction = actions.nextInt() - 1;
 
         //Random funktion för att välja motståndarens handling
         eAction = random.nextInt(3);
