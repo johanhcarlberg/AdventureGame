@@ -84,18 +84,10 @@ public class Game {
         volcanoWorld.getEnemies().add(dragonType);
     }
 
-    public void setupGame() {
-        CharacterClass.availableClasses.add(new CharacterClass("Warrior", 5, 3, 2, 2));
-        CharacterClass.availableClasses.add(new CharacterClass("Rogue", 3, 2, 5, 3));
-
-        loadWorlds();
+    private void loadDilemmas() {
         World waterWorld = World.availableWorlds.get(0);
         World volcanoWorld = World.availableWorlds.get(1);
-        loadEnemyTypes();
-        // Skapa alla fiendetyper
-        // Skapa alla världar
-        // Lägg till fienderna i rätt värld
-        
+
         //Skapar olika arraylists med dilemma-val som tar emot typen Answers.
         //Detta görs för att denna lista sedan ska skickas med när man skapar själva dilemmat.
         ArrayList<Answer> dil1Choices = new ArrayList<Answer>();
@@ -139,7 +131,17 @@ public class Game {
          //Lägger till två dilemman till volcanWorld
          volcanoWorld.getDilemmas().add(new Dilemma("You meet a mysterious man who asks you the way to heaven. What do you answer? ", dil3Choices));
          volcanoWorld.getDilemmas().add(new Dilemma("Suddenly you see a bird flying straight towards you. What do you do? ", dil4Choices));
-      
+    }
+
+    public void setupGame() {
+        CharacterClass.availableClasses.add(new CharacterClass("Warrior", 5, 3, 2, 2));
+        CharacterClass.availableClasses.add(new CharacterClass("Rogue", 3, 2, 5, 3));
+
+        loadWorlds();
+        loadEnemyTypes();
+        loadDilemmas();        
+
+        World waterWorld = World.availableWorlds.get(0);
         currentWorld = waterWorld; // Spelaren börjar i vattenvärlden.
 
     }
