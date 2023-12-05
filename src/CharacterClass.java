@@ -38,19 +38,30 @@ public class CharacterClass {
     }
 
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        return result;
+    }
+
+    @Override
     public boolean equals(Object obj) {
-        if (obj.getClass() != this.getClass()) {
-            return false;
-        }
+        if (this == obj)
+            return true;
 
-        if (!(obj instanceof CharacterClass)) {
+        if (obj == null)
             return false;
-        }
 
-        CharacterClass cObj = (CharacterClass) obj;
-        if (cObj.name != this.name) {
+        if (getClass() != obj.getClass())
             return false;
-        }
+
+        CharacterClass other = (CharacterClass) obj;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
         return true;
-    } 
+    }
 }
